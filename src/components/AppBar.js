@@ -16,10 +16,12 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
-
+import PinterestIcon from "./PinterestIcon";
+import Button from "@material-ui/core/Button";
+import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 const useStyles = makeStyles(theme => ({
-  grow: {
-    flexGrow: 1
+  appBar: {
+    backgroundColor: "#fff"
   },
   menuButton: {
     marginRight: theme.spacing(2)
@@ -32,6 +34,8 @@ const useStyles = makeStyles(theme => ({
   },
   search: {
     position: "relative",
+    // display: "flex",
+    flexGrow: 1,
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
     "&:hover": {
@@ -56,6 +60,7 @@ const useStyles = makeStyles(theme => ({
   },
   inputRoot: {
     color: "inherit"
+    // display: "flex"
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 7),
@@ -162,26 +167,22 @@ export default function PrimarySearchAppBar() {
   );
 
   return (
-    <div className={classes.grow}>
-      <AppBar position="static">
+    <div>
+      <AppBar
+        position="static"
+        // className={classes.appBar}
+      >
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
+          <IconButton color="inherit">
+            <PinterestIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Pinterest
-          </Typography>
+
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search…"
+              placeholder="Search for…"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput
@@ -189,19 +190,49 @@ export default function PrimarySearchAppBar() {
               inputProps={{ "aria-label": "search" }}
             />
           </div>
-          <div className={classes.grow} />
+
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
+            <Button>Home</Button>
+            <Button>Following</Button>
+            <Button>
+              <AccountCircle />
+              Luis
+            </Button>
+            <Button>
+              <div
+                style={{
+                  height: "30px",
+                  width: "4px",
+                  borderLeft: "2px solid #efefef",
+                  marginLeft: "16px"
+                }}
+              ></div>
+            </Button>
+
+            <Button color="inherit">
+              <svg
+                height="24"
+                width="24"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                aria-label=""
+                role="img"
+                style={{ color: "white" }}
+              >
+                <path d="M18 12.5a1.5 1.5 0 1 1 .001-3.001A1.5 1.5 0 0 1 18 12.5m-6 0a1.5 1.5 0 1 1 .001-3.001A1.5 1.5 0 0 1 12 12.5m-6 0a1.5 1.5 0 1 1 .001-3.001A1.5 1.5 0 0 1 6 12.5M12 0C5.925 0 1 4.925 1 11c0 2.653.94 5.086 2.504 6.986L2 24l5.336-3.049A10.93 10.93 0 0 0 12 22c6.075 0 11-4.925 11-11S18.075 0 12 0"></path>
+              </svg>
+            </Button>
             <IconButton aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
-            <IconButton
+            <IconButton aria-label="show 4 new mails" color="inherit">
+              <Badge badgeContent={4} color="secondary">
+                <MoreHorizIcon />
+              </Badge>
+            </IconButton>
+            {/* <IconButton
               edge="end"
               aria-label="account of current user"
               aria-controls={menuId}
@@ -210,7 +241,7 @@ export default function PrimarySearchAppBar() {
               color="inherit"
             >
               <AccountCircle />
-            </IconButton>
+            </IconButton> */}
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
