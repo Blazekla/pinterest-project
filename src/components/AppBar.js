@@ -19,9 +19,12 @@ import MoreIcon from "@material-ui/icons/MoreVert";
 import PinterestIcon from "./PinterestIcon";
 import Button from "@material-ui/core/Button";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import MessagesIcon from "./MessagesIcon";
 const useStyles = makeStyles(theme => ({
   appBar: {
-    backgroundColor: "#fff"
+    backgroundColor: "#FFF",
+    color: "#8E8E8E",
+    fontSize: "12px"
   },
   menuButton: {
     marginRight: theme.spacing(2)
@@ -36,11 +39,15 @@ const useStyles = makeStyles(theme => ({
     position: "relative",
     // display: "flex",
     flexGrow: 1,
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25)
-    },
+    borderRadius: "8px",
+
+    // theme.shape.borderRadius,
+    backgroundColor: "#efefef",
+
+    // fade(theme.palette.common.white, 0.15),
+    // "&:hover": {
+    //   backgroundColor: fade(theme.palette.common.white, 0.25)
+    // This hover feature isn't available on the actual page },
     marginRight: theme.spacing(2),
     marginLeft: 0,
     width: "100%",
@@ -56,10 +63,12 @@ const useStyles = makeStyles(theme => ({
     pointerEvents: "none",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    color: "#211922"
   },
   inputRoot: {
-    color: "inherit"
+    color: "#211922"
+    // color:"inherit",
     // display: "flex"
   },
   inputInput: {
@@ -73,7 +82,8 @@ const useStyles = makeStyles(theme => ({
   sectionDesktop: {
     display: "none",
     [theme.breakpoints.up("md")]: {
-      display: "flex"
+      display: "flex",
+      alignItems: "center"
     }
   },
   sectionMobile: {
@@ -168,10 +178,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div>
-      <AppBar
-        position="static"
-        // className={classes.appBar}
-      >
+      <AppBar position="static" className={classes.appBar}>
         <Toolbar>
           <IconButton color="inherit">
             <PinterestIcon />
@@ -192,56 +199,56 @@ export default function PrimarySearchAppBar() {
           </div>
 
           <div className={classes.sectionDesktop}>
-            <Button>Home</Button>
-            <Button>Following</Button>
-            <Button>
-              <AccountCircle />
+            <Button style={{ color: "#333" }}>Home</Button>
+            <Button style={{ color: "#8e8e8e" }}>Following</Button>
+
+            <Button style={{ color: "#8e8e8e" }}>
+              <AccountCircle style={{ color: "#8e8e8e" }} />
+              {/* <svg
+                height="24"
+                wight="24"
+                // width="24px"
+                viewBox="-50 -50 100 100"
+                version="1.1"
+                preserveAspectRatio="xMidYMid"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>yo</title>
+                <text
+                  fontSize="50px"
+                  fill="#fff"
+                  dy="0.35em"
+                  textAnchor="middle"
+                >
+                  L
+                </text>
+              </svg> */}
               Luis
             </Button>
-            <Button>
-              <div
-                style={{
-                  height: "30px",
-                  width: "4px",
-                  borderLeft: "2px solid #efefef",
-                  marginLeft: "16px"
-                }}
-              ></div>
-            </Button>
+            {/* <Button> */}
+            <div
+              style={{
+                height: "30px",
+                width: "4px",
+                borderLeft: "2px solid #efefef",
+                marginLeft: "16px",
+                padding: "6px 8px"
+              }}
+            ></div>
+            {/* </Button> */}
 
-            <Button color="inherit">
-              <svg
-                height="24"
-                width="24"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                aria-label=""
-                role="img"
-                style={{ color: "white" }}
-              >
-                <path d="M18 12.5a1.5 1.5 0 1 1 .001-3.001A1.5 1.5 0 0 1 18 12.5m-6 0a1.5 1.5 0 1 1 .001-3.001A1.5 1.5 0 0 1 12 12.5m-6 0a1.5 1.5 0 1 1 .001-3.001A1.5 1.5 0 0 1 6 12.5M12 0C5.925 0 1 4.925 1 11c0 2.653.94 5.086 2.504 6.986L2 24l5.336-3.049A10.93 10.93 0 0 0 12 22c6.075 0 11-4.925 11-11S18.075 0 12 0"></path>
-              </svg>
-            </Button>
+            <MessagesIcon />
             <IconButton aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MoreHorizIcon />
-              </Badge>
-            </IconButton>
-            {/* <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
+            <IconButton
+              aria-label="show more options horizontal icon"
               color="inherit"
             >
-              <AccountCircle />
-            </IconButton> */}
+              <MoreHorizIcon />
+            </IconButton>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
@@ -251,7 +258,7 @@ export default function PrimarySearchAppBar() {
               onClick={handleMobileMenuOpen}
               color="inherit"
             >
-              <MoreIcon />
+              <MessagesIcon />
             </IconButton>
           </div>
         </Toolbar>
