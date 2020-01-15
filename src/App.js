@@ -5,6 +5,8 @@ import PrimarySearchAppBar from "./components/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import ImageGridList from "./components/ImageGridList";
 import Container from "@material-ui/core/Container";
+import CardContent from "./components/cards/Cards";
+import CardListGrid from "./components/CardListGrid";
 
 function App() {
   return (
@@ -14,7 +16,9 @@ function App() {
           <PrimarySearchAppBar />
 
           <Container maxWidth="lg">
-            <ImageGridList />
+            {/* <CardContent /> */}
+            {/* <ImageGridList /> */}
+            <CardListGrid />
           </Container>
         </div>
       </CssBaseline>

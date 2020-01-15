@@ -6,6 +6,7 @@ import GridListTileBar from "@material-ui/core/GridListTileBar";
 import IconButton from "@material-ui/core/IconButton";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import tileData from "../images/tileData";
+import CardContent from "./cards/Cards";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -49,7 +50,10 @@ export default function AdvancedGridList() {
         className={classes.gridList}
         cols={parseInt(classes.cols, 10)}
       >
-        {tileData.map(tile => (
+        {/* {tileData.map(tile => (
+
+
+
           <GridListTile
             key={tile.img}
             // cols={tile.featured ? 2 : 1}
@@ -73,7 +77,9 @@ export default function AdvancedGridList() {
               className={classes.titleBar}
             />
           </GridListTile>
-        ))}
+        ))} */}
+
+        <CardContent />
       </GridList>
     </div>
   );
