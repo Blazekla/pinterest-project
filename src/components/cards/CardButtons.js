@@ -8,7 +8,12 @@ function CardButtons() {
   return (
     <React.Fragment>
       <div style={{ position: "absolute", top: "0", right: "0" }}>
-        <Fab variant="extended">Save</Fab>
+        <Fab
+          variant="extended"
+          style={{ backgroundColor: "#e60023", color: "#fff" }}
+        >
+          Save
+        </Fab>
       </div>
       <div
         style={{
