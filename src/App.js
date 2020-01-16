@@ -7,19 +7,49 @@ import ImageGridList from "./components/ImageGridList";
 import Container from "@material-ui/core/Container";
 import CardContent from "./components/cards/Cards";
 import CardListGrid from "./components/CardListGrid";
+import Fab from "@material-ui/core/Fab";
 
 function App() {
   return (
     <React.Fragment>
       <CssBaseline>
-        <div className="App">
-          <PrimarySearchAppBar />
+        {/* <div className="App"> */}
+        <PrimarySearchAppBar />
 
-          <Container maxWidth="lg">
-            {/* <CardContent /> */}
-            {/* <ImageGridList /> */}
+        <Container maxWidth="xl">
+          {/* <CardContent /> */}
+          {/* <ImageGridList /> */}
+          <div>
             <CardListGrid />
-          </Container>
+          </div>
+          {/* </div> */}
+        </Container>
+        <div
+          style={{
+            margin: "12px",
+            position: "fixed",
+            bottom: "0",
+            right: "0",
+            zIndex: "700"
+          }}
+        >
+          <Fab
+            style={{
+              width: "40px",
+              height: "40px",
+              marginBottom: "8px",
+              backgroundColor: "#fff"
+            }}
+          >
+            +
+          </Fab>
+          <br />
+
+          <Fab
+            style={{ width: "40px", height: "40px", backgroundColor: "#fff" }}
+          >
+            ?
+          </Fab>
         </div>
       </CssBaseline>
     </React.Fragment>

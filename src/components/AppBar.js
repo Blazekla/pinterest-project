@@ -178,7 +178,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div>
-      <AppBar position="static" className={classes.appBar}>
+      <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <IconButton color="inherit">
             <PinterestIcon />
