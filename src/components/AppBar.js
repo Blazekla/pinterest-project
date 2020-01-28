@@ -16,10 +16,14 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import PinterestIcon from "./PinterestIcon";
 import Button from "@material-ui/core/Button";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-import MessagesIcon from "./MessagesIcon";
+
+
+import PinterestIcon from "./icons/PinterestIcon";
+import MessagesIcon from "./icons/MessagesIcon";
+
+
 const useStyles = makeStyles(theme => ({
   appBar: {
     backgroundColor: "#FFF",

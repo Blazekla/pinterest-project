@@ -1,7 +1,9 @@
 import React from "react";
-import CardContent from "./cards/Cards";
+import CardContent from "./cards/Card";
 import { Container, Grid } from "@material-ui/core";
 
+//TODO:
+//use JSON file to feed images to grid
 const count = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 function Projects() {
   return (

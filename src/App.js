@@ -3,9 +3,9 @@ import "typeface-roboto";
 // import Typography from "@material-ui/core/Typography";
 import PrimarySearchAppBar from "./components/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import ImageGridList from "./components/ImageGridList";
+
 import Container from "@material-ui/core/Container";
-import CardContent from "./components/cards/Cards";
+import CardContent from "./components/cards/Card";
 import CardListGrid from "./components/CardListGrid";
 import Fab from "@material-ui/core/Fab";
 

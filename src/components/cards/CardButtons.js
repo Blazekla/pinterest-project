@@ -7,47 +7,69 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 function CardButtons() {
   return (
     <React.Fragment>
-      <div style={{ position: "absolute", top: "0", right: "0" }}>
-        <Fab
-          variant="extended"
-          style={{ backgroundColor: "#e60023", color: "#fff" }}
-        >
-          Save
-        </Fab>
-      </div>
+      <Fab
+        variant="extended"
+        style={{
+          position: "absolute",
+          top: "10px",
+          right: "10px",
+          backgroundColor: "#e60023",
+          color: "#fff"
+        }}
+      >
+        Save
+      </Fab>
+
       <div
         style={{
           position: "absolute",
-          bottom: "0"
+          bottom: "10px",
+          width: "100%"
         }}
       >
-        <Fab
-          variant="extended"
+        <div
           style={{
-            height: "40px",
-            backgroundColor: "#fff"
+            display: "flex",
+            justifyContent: "space-between"
           }}
         >
-          <CallMadeIcon />
-          <Typography>URL Here</Typography>
-        </Fab>
+          <Fab
+            variant="extended"
+            style={{
+              height: "40px",
+              backgroundColor: "#fff",
+              marginRight: "10px"
+            }}
+          >
+            <CallMadeIcon />
+            <Typography>URL Here</Typography>
+          </Fab>
 
-        {/* Expand the items across */}
-
-        <Fab
-          style={{
-            width: "40px",
-            height: "40px",
-            backgroundColor: "#fff"
-          }}
-        >
-          +
-        </Fab>
-        {/* <br /> */}
-
-        <Fab style={{ width: "40px", height: "40px", backgroundColor: "#fff" }}>
-          <MoreHorizIcon />
-        </Fab>
+          {/* Expand the items across */}
+          <div
+            style={{
+              // flexGrow: "1",
+              display: "flex",
+              justifyContent: "space-evenly"
+            }}
+          >
+            <Fab
+              style={{
+                width: "40px",
+                height: "40px",
+                backgroundColor: "#fff",
+                marginRight: "5px"
+              }}
+            >
+              +
+            </Fab>
+            <Fab
+              style={{ width: "40px", height: "40px", backgroundColor: "#fff" }}
+            >
+              <MoreHorizIcon />
+            </Fab>
+          </div>
+        </div>
       </div>
     </React.Fragment>
   );
