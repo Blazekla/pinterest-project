@@ -3,8 +3,11 @@ import React from "react";
 //Import MaterialUI components
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+
 //Import Custom Components
 import Layout from "../components/Layout";
+import CardListGrid from "../components/CardListGrid";
 
 const useStyles = makeStyles((theme) => ({
   outer: {
@@ -19,6 +22,11 @@ function Home() {
       <div className={classes.outer}>
         <Typography>This is the home page dude</Typography>
       </div>
+      <Container maxWidth="xl">
+        <div>
+          <CardListGrid />
+        </div>
+      </Container>
     </Layout>
   );
 }
