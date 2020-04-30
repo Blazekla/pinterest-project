@@ -1,57 +1,39 @@
 import React from "react";
-import "typeface-roboto";
-// import Typography from "@material-ui/core/Typography";
-import PrimarySearchAppBar from "./components/AppBar";
+
+import { Route, Switch } from "react-router-dom";
+
+//Import MaterialUI Components
 import CssBaseline from "@material-ui/core/CssBaseline";
 
-import Container from "@material-ui/core/Container";
-import CardContent from "./components/cards/Card";
-import CardListGrid from "./components/CardListGrid";
-import Fab from "@material-ui/core/Fab";
+//Import Custom Components
+import Home from "./pages/Home";
+import Following from "./pages/Following";
+import SinglePin from "./pages/SinglePin";
+import UserPage from "./pages/UserPage";
 
 function App() {
   return (
     <React.Fragment>
-      <CssBaseline>
-        {/* <div className="App"> */}
-        <PrimarySearchAppBar />
+      <CssBaseline />
+      <div>
+        <Switch>
+          <Route path="/following">
+            <Following />
+          </Route>
 
-        <Container maxWidth="xl">
-          {/* <CardContent /> */}
-          {/* <ImageGridList /> */}
-          <div>
-            <CardListGrid />
-          </div>
-          {/* </div> */}
-        </Container>
-        <div
-          style={{
-            margin: "12px",
-            position: "fixed",
-            bottom: "0",
-            right: "0",
-            zIndex: "700"
-          }}
-        >
-          <Fab
-            style={{
-              width: "40px",
-              height: "40px",
-              marginBottom: "8px",
-              backgroundColor: "#fff"
-            }}
-          >
-            +
-          </Fab>
-          <br />
+          <Route path="/pin">
+            <SinglePin />
+          </Route>
 
-          <Fab
-            style={{ width: "40px", height: "40px", backgroundColor: "#fff" }}
-          >
-            ?
-          </Fab>
-        </div>
-      </CssBaseline>
+          <Route path="/user">
+            <UserPage />
+          </Route>
+
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </div>
     </React.Fragment>
   );
 }

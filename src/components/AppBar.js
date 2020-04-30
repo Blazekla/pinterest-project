@@ -1,43 +1,42 @@
 import React from "react";
-import { fade, makeStyles } from "@material-ui/core/styles";
+
+//Import MaterialUI Components
+import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
+
+//Import Custom Components
+import DesktopMenu from "./subcomponents/desktopMenu";
+
+//remove soon
+
 import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
+
 import Badge from "@material-ui/core/Badge";
 
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 
-import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import MoreIcon from "@material-ui/icons/MoreVert";
-import Button from "@material-ui/core/Button";
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 
-
-import PinterestIcon from "./icons/PinterestIcon";
 import MessagesIcon from "./icons/MessagesIcon";
 
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   appBar: {
     backgroundColor: "#FFF",
     color: "#8E8E8E",
-    fontSize: "12px"
+    fontSize: "12px",
   },
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
   },
   title: {
     display: "none",
     [theme.breakpoints.up("sm")]: {
-      display: "block"
-    }
+      display: "block",
+    },
   },
   search: {
     position: "relative",
@@ -45,20 +44,15 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     borderRadius: "8px",
 
-    // theme.shape.borderRadius,
     backgroundColor: "#efefef",
 
-    // fade(theme.palette.common.white, 0.15),
-    // "&:hover": {
-    //   backgroundColor: fade(theme.palette.common.white, 0.25)
-    // This hover feature isn't available on the actual page },
     marginRight: theme.spacing(2),
     marginLeft: 0,
     width: "100%",
     [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing(3),
-      width: "auto"
-    }
+      width: "auto",
+    },
   },
   searchIcon: {
     width: theme.spacing(7),
@@ -68,10 +62,10 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    color: "#211922"
+    color: "#211922",
   },
   inputRoot: {
-    color: "#211922"
+    color: "#211922",
     // color:"inherit",
     // display: "flex"
   },
@@ -80,25 +74,25 @@ const useStyles = makeStyles(theme => ({
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("md")]: {
-      width: 200
-    }
+      width: 200,
+    },
   },
   sectionDesktop: {
     display: "none",
     [theme.breakpoints.up("md")]: {
       display: "flex",
-      alignItems: "center"
-    }
+      alignItems: "center",
+    },
   },
   sectionMobile: {
     display: "flex",
     [theme.breakpoints.up("md")]: {
-      display: "none"
-    }
-  }
+      display: "none",
+    },
+  },
 }));
 
-export default function PrimarySearchAppBar() {
+function NavBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -106,7 +100,7 @@ export default function PrimarySearchAppBar() {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  const handleProfileMenuOpen = event => {
+  const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -119,10 +113,11 @@ export default function PrimarySearchAppBar() {
     handleMobileMenuClose();
   };
 
-  const handleMobileMenuOpen = event => {
+  const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  //RenderMenu section
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
@@ -139,6 +134,7 @@ export default function PrimarySearchAppBar() {
     </Menu>
   );
 
+  //RenderMobileMenu Section
   const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
     <Menu
@@ -179,81 +175,11 @@ export default function PrimarySearchAppBar() {
       </MenuItem>
     </Menu>
   );
-
   return (
-    <div>
+    <React.Fragment>
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
-          <IconButton color="inherit">
-            <PinterestIcon />
-          </IconButton>
-
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search for…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
-          </div>
-
-          <div className={classes.sectionDesktop}>
-            <Button style={{ color: "#333" }}>Home</Button>
-            <Button style={{ color: "#8e8e8e" }}>Following</Button>
-
-            <Button style={{ color: "#8e8e8e" }}>
-              <AccountCircle style={{ color: "#8e8e8e" }} />
-              {/* <svg
-                height="24"
-                wight="24"
-                // width="24px"
-                viewBox="-50 -50 100 100"
-                version="1.1"
-                preserveAspectRatio="xMidYMid"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <title>yo</title>
-                <text
-                  fontSize="50px"
-                  fill="#fff"
-                  dy="0.35em"
-                  textAnchor="middle"
-                >
-                  L
-                </text>
-              </svg> */}
-              Luis
-            </Button>
-            {/* <Button> */}
-            <div
-              style={{
-                height: "30px",
-                width: "4px",
-                borderLeft: "2px solid #efefef",
-                marginLeft: "16px",
-                padding: "6px 8px"
-              }}
-            ></div>
-            {/* </Button> */}
-
-            <MessagesIcon />
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              aria-label="show more options horizontal icon"
-              color="inherit"
-            >
-              <MoreHorizIcon />
-            </IconButton>
-          </div>
+          <DesktopMenu />
           <div className={classes.sectionMobile}>
             <IconButton
               aria-label="show more"
@@ -262,13 +188,15 @@ export default function PrimarySearchAppBar() {
               onClick={handleMobileMenuOpen}
               color="inherit"
             >
-              <MessagesIcon />
+              {/* <MessagesIcon /> */}
             </IconButton>
           </div>
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-    </div>
+    </React.Fragment>
   );
 }
+
+export default NavBar;
