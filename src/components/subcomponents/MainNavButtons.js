@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
+import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded";
 
 const useStyles = makeStyles((theme) => ({
   sectionDesktop: {
@@ -24,13 +25,15 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonBackground: {
     backgroundColor: "#111",
-    color: "white",
+    "& span": {
+      color: "#fff",
+    },
   },
-  // iconBackground: {
-  //   fill: "#111",
-  // },
-  test: {
+
+  mobileButton: {
     borderRadius: "24px",
+    backgroundColor: "#111",
+    color: "#FFF",
   },
 }));
 
@@ -60,7 +63,10 @@ function MainNavButtons() {
         </Button>
       </Grid>
       <Grid container className={classes.sectionMobile}>
-        <Button>Mobile!</Button>
+        <Button className={classes.mobileButton}>
+          Mobile!
+          <ExpandMoreRoundedIcon />
+        </Button>
       </Grid>
     </React.Fragment>
   );
