@@ -1,7 +1,6 @@
 import React from "react";
 
 //Import MaterialUI components
-import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
@@ -19,9 +18,7 @@ function Home() {
   const classes = useStyles();
   return (
     <Layout>
-      <div className={classes.outer}>
-        <Typography>This is the home page dude</Typography>
-      </div>
+      <div className={classes.outer}></div>
       <Container maxWidth="xl">
         <div>
           <CardListGrid />

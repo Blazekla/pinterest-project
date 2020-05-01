@@ -6,7 +6,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 
 //Import Custom Components
-import DesktopMenu from "./subcomponents/desktopMenu";
+import DesktopMenu from "./subcomponents/DesktopMenu";
 
 //remove soon
 
@@ -21,7 +21,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 
-import MessagesIcon from "./icons/MessagesIcon";
+// import MessagesIcon from "./icons/MessagesIcon";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {

@@ -88,9 +88,19 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
+  buttonBackground: {
+    backgroundColor: "#111",
+    color: "white",
+  },
+  iconBackground: {
+    fill: "#111",
+  },
+  test: {
+    borderRadius: "24px",
+  },
 }));
 
-function DesktopMenu() {
+function DesktopMenu(props) {
   const classes = useStyles();
   return (
     <React.Fragment>
@@ -98,38 +108,59 @@ function DesktopMenu() {
         <PinterestIcon />
       </IconButton>
 
-      <div className="mobilesection">
-        <Button style={{ color: "#333" }} component={NavLink} to="/">
+      <div className={classes.sectionDesktop}>
+        <Button
+          style={{ color: "#333" }}
+          exact
+          component={NavLink}
+          to="/"
+          className={classes.test}
+          activeClassName={classes.buttonBackground}
+        >
           Home
         </Button>
+
         <Button
           component={NavLink}
           to="/following"
           style={{ color: "#8e8e8e" }}
+          activeClassName={classes.buttonBackground}
         >
           Following
         </Button>
       </div>
 
-      <div className={classes.search}>
+      <div className={classes.sectionMobile}>
+        <Button>Test</Button>
         <div className={classes.searchIcon}>
           <SearchIcon />
         </div>
-        <InputBase
-          placeholder="Search for…"
-          classes={{
-            root: classes.inputRoot,
-            input: classes.inputInput,
-          }}
-          inputProps={{ "aria-label": "search" }}
-        />
       </div>
 
       <div className={classes.sectionDesktop}>
+        <div className={classes.search}>
+          <div className={classes.searchIcon}>
+            <SearchIcon />
+          </div>
+          <InputBase
+            placeholder="Search for…"
+            classes={{
+              root: classes.inputRoot,
+              input: classes.inputInput,
+            }}
+            inputProps={{ "aria-label": "search" }}
+          />
+        </div>
+      </div>
+
+      <div
+      //  className={classes.sectionDesktop}
+      >
         <IconButton
           aria-label="show 17 new notifications"
           color="inherit"
           component={NavLink}
+          activeClassName={classes.iconBackground}
           to="/pin"
         >
           <Badge badgeContent={17} color="secondary">
@@ -139,7 +170,12 @@ function DesktopMenu() {
 
         <MessagesIcon />
 
-        <Button style={{ color: "#8e8e8e" }} component={NavLink} to="/user">
+        <Button
+          style={{ color: "#8e8e8e" }}
+          component={NavLink}
+          to="/user"
+          activeClassName={classes.iconBackground}
+        >
           <AccountCircle style={{ color: "#8e8e8e" }} />
         </Button>
 

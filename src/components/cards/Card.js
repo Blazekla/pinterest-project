@@ -18,7 +18,7 @@ function Cards() {
   const handleMouseOver = () => {
     setIsInFocus(true);
   };
-  console.warn(`Curent State: ${isInFocus}`);
+  // console.warn(`Curent State: ${isInFocus}`);
 
   return (
     <React.Fragment>

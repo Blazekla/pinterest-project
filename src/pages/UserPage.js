@@ -1,7 +1,6 @@
 import React from "react";
 
 //Import MaterialUI Components
-import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
 //Import Custom Components
@@ -17,9 +16,7 @@ function UserPage() {
   const classes = useStyles();
   return (
     <Layout>
-      <div className={classes.outer}>
-        <Typography>This is the user page dude</Typography>
-      </div>
+      <div className={classes.outer}></div>
     </Layout>
   );
 }
