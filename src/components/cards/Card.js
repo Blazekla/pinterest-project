@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -38,7 +39,11 @@ function Cards() {
         onMouseEnter={handleMouseOver}
         onMouseLeave={handleMouseOut}
       >
-        <CardActionArea className={classes.actionArea}>
+        <CardActionArea
+          className={classes.actionArea}
+          component={NavLink}
+          to="/pin"
+        >
           <CardMedia
             component="img"
             height="400"

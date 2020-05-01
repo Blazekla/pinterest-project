@@ -29,13 +29,7 @@ function StaticButtons(props) {
   return (
     <Grid container wrap="nowrap" className={classes.container}>
       <Grid item>
-        <IconButton
-          aria-label="show 17 new notifications"
-          color="inherit"
-          component={NavLink}
-          activeClassName={classes.iconBackground}
-          to="/pin"
-        >
+        <IconButton aria-label="show 17 new notifications" color="inherit">
           <Badge badgeContent={17} color="secondary">
             <NotificationsIcon />
           </Badge>
