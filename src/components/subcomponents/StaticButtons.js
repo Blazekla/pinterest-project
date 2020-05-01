@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 
 //Import MaterialUI Components
 import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import Badge from "@material-ui/core/Badge";
 import Button from "@material-ui/core/Button";
@@ -12,10 +13,12 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded";
 
 //Import Custom Components
-// import PinterestIcon from "../icons/PinterestIcon";
 import MessagesIcon from "../icons/MessagesIcon";
 
 const useStyles = makeStyles((theme) => ({
+  container: {
+    width: "auto",
+  },
   iconBackground: {
     fill: "#111",
   },
@@ -24,21 +27,26 @@ const useStyles = makeStyles((theme) => ({
 function StaticButtons(props) {
   const classes = useStyles();
   return (
-    <div>
-      <IconButton
-        aria-label="show 17 new notifications"
-        color="inherit"
-        component={NavLink}
-        activeClassName={classes.iconBackground}
-        to="/pin"
-      >
-        <Badge badgeContent={17} color="secondary">
-          <NotificationsIcon />
-        </Badge>
-      </IconButton>
-
-      <MessagesIcon />
-
+    <Grid container wrap="nowrap" className={classes.container}>
+      <Grid item>
+        <IconButton
+          aria-label="show 17 new notifications"
+          color="inherit"
+          component={NavLink}
+          activeClassName={classes.iconBackground}
+          to="/pin"
+        >
+          <Badge badgeContent={17} color="secondary">
+            <NotificationsIcon />
+          </Badge>
+        </IconButton>
+      </Grid>
+      <Grid item>
+        <IconButton>
+          <MessagesIcon />
+        </IconButton>
+      </Grid>
+      <Grid item></Grid>
       <Button
         style={{ color: "#8e8e8e" }}
         component={NavLink}
@@ -47,14 +55,15 @@ function StaticButtons(props) {
       >
         <AccountCircle style={{ color: "#8e8e8e" }} />
       </Button>
-
-      <IconButton
-        aria-label="show more options horizontal icon"
-        color="inherit"
-      >
-        <ExpandMoreRoundedIcon />
-      </IconButton>
-    </div>
+      <Grid item>
+        <IconButton
+          aria-label="show more options horizontal icon"
+          color="inherit"
+        >
+          <ExpandMoreRoundedIcon />
+        </IconButton>
+      </Grid>
+    </Grid>
   );
 }
 

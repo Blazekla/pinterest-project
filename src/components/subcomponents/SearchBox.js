@@ -2,13 +2,13 @@ import React from "react";
 
 //Import MaterialUI Components
 import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
 import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
 
 const useStyles = makeStyles((theme) => ({
   search: {
     position: "relative",
-    // display: "flex",
     flexGrow: 1,
     borderRadius: "8px",
 
@@ -16,10 +16,11 @@ const useStyles = makeStyles((theme) => ({
 
     marginRight: theme.spacing(2),
     marginLeft: 0,
-    width: "100%",
+    justifyContent: "flex-end",
     [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing(3),
       width: "auto",
+      justifyContent: "flex-start",
     },
   },
   searchIcon: {
@@ -52,10 +53,12 @@ const useStyles = makeStyles((theme) => ({
 function SearchBox() {
   const classes = useStyles();
   return (
-    <div className={classes.search}>
-      <div className={classes.searchIcon}>
+    <Grid container className={classes.search}>
+      {/* <div className={classes.search}> */}
+      <Grid item className={classes.searchIcon}>
         <SearchIcon />
-      </div>
+      </Grid>
+      {/* <Grid item> */}
       <InputBase
         placeholder="Search for…"
         classes={{
@@ -64,7 +67,11 @@ function SearchBox() {
         }}
         inputProps={{ "aria-label": "search" }}
       />
-    </div>
+      {/* </Grid> */}
+      {/* <div className={classes.searchIcon}>
+      </div> */}
+      {/* </div> */}
+    </Grid>
   );
 }
 

@@ -180,7 +180,7 @@ function NavBar() {
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <DesktopMenu />
-          <div className={classes.sectionMobile}>
+          {/* <div className={classes.sectionMobile}>
             <IconButton
               aria-label="show more"
               aria-controls={mobileMenuId}
@@ -188,9 +188,9 @@ function NavBar() {
               onClick={handleMobileMenuOpen}
               color="inherit"
             >
-              {/* <MessagesIcon /> */}
+              <MessagesIcon />
             </IconButton>
-          </div>
+          </div> */}
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
