@@ -11,9 +11,12 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import CheckRoundedIcon from "@material-ui/icons/CheckRounded";
+import Menu from "@material-ui/core/Menu";
+import MenuList from "@material-ui/core/MenuList";
+import MenuItem from "@material-ui/core/MenuItem";
 
 //Import Custom Components
-import FunctionalDrawer from "./FunctionalDrawer";
+import FunctionalMenu from "./FunctionalMenu";
 
 const useStyles = makeStyles((theme) => ({
   sectionDesktop: {
@@ -52,25 +55,41 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function MainNavButtons() {
-  const [drawerState, setDrawerState] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
 
-  const toggleDrawer = () => {
-    return setDrawerState(!drawerState);
+  const handleClick = (e) => {
+    setAnchorEl(e.currentTarget);
+  };
+
+  const handleMenuclose = () => {
+    setAnchorEl(null);
   };
 
   //Button list for mobile view
   const ButtonList = () => (
     <List>
-      <ListItem>
+      <ListItem
+        button
+        component={NavLink}
+        aria-label="Show Projects Section"
+        to="/"
+        onClick={handleMenuclose}
+      >
         <ListItemText primary="Home" />
         <ListItemIcon>
-          <ExpandMoreRoundedIcon />
+          <CheckRoundedIcon color="secondary" />
         </ListItemIcon>
       </ListItem>
-      <ListItem>
+      <ListItem
+        button
+        component={NavLink}
+        aria-label="Show Projects Section"
+        to="/following"
+        onClick={handleMenuclose}
+      >
         <ListItemText primary="Following" />
         <ListItemIcon>
-          <CheckRoundedIcon />
+          <CheckRoundedIcon color="secondary" />
         </ListItemIcon>
       </ListItem>
     </List>
@@ -104,14 +123,46 @@ function MainNavButtons() {
         <Button
           className={classes.mobileButton}
           endIcon={<ExpandMoreRoundedIcon />}
-          onClick={toggleDrawer}
+          // onClick={toggleDrawer}
+          onClick={handleClick}
         >
           Mobile!
         </Button>
       </Grid>
-      <FunctionalDrawer anchor="top" open={drawerState} close={toggleDrawer}>
-        <ButtonList />
-      </FunctionalDrawer>
+
+      <Menu
+        id="functional-menu"
+        anchorEl={anchorEl}
+        open={Boolean(anchorEl)}
+        onClose={handleMenuclose}
+      >
+        <List>
+          <ListItem
+            button
+            component={NavLink}
+            aria-label="Show Projects Section"
+            to="/"
+            onClick={handleMenuclose}
+          >
+            <ListItemText primary="Home" />
+            <ListItemIcon>
+              <CheckRoundedIcon color="secondary" />
+            </ListItemIcon>
+          </ListItem>
+          <ListItem
+            button
+            component={NavLink}
+            aria-label="Show Projects Section"
+            to="/following"
+            onClick={handleMenuclose}
+          >
+            <ListItemText primary="Following" />
+            <ListItemIcon>
+              <CheckRoundedIcon color="secondary" />
+            </ListItemIcon>
+          </ListItem>
+        </List>
+      </Menu>
     </React.Fragment>
   );
 }
