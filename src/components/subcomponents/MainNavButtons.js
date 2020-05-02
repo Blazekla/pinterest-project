@@ -67,8 +67,8 @@ function MainNavButtons() {
 
   //Button list for mobile view
   const ButtonList = () => (
-    <List>
-      <ListItem
+    <MenuList>
+      <MenuItem
         button
         component={NavLink}
         aria-label="Show Projects Section"
@@ -76,11 +76,11 @@ function MainNavButtons() {
         onClick={handleMenuclose}
       >
         <ListItemText primary="Home" />
-        <ListItemIcon>
+        {/* <ListItemIcon>
           <CheckRoundedIcon color="secondary" />
-        </ListItemIcon>
-      </ListItem>
-      <ListItem
+        </ListItemIcon> */}
+      </MenuItem>
+      <MenuItem
         button
         component={NavLink}
         aria-label="Show Projects Section"
@@ -88,11 +88,11 @@ function MainNavButtons() {
         onClick={handleMenuclose}
       >
         <ListItemText primary="Following" />
-        <ListItemIcon>
+        {/* <ListItemIcon>
           <CheckRoundedIcon color="secondary" />
-        </ListItemIcon>
-      </ListItem>
-    </List>
+        </ListItemIcon> */}
+      </MenuItem>
+    </MenuList>
   );
 
   const classes = useStyles();
@@ -130,39 +130,14 @@ function MainNavButtons() {
         </Button>
       </Grid>
 
-      <Menu
+      <FunctionalMenu
         id="functional-menu"
         anchorEl={anchorEl}
-        open={Boolean(anchorEl)}
-        onClose={handleMenuclose}
+        handleOpen={Boolean(anchorEl)}
+        handleOnClose={handleMenuclose}
       >
-        <List>
-          <ListItem
-            button
-            component={NavLink}
-            aria-label="Show Projects Section"
-            to="/"
-            onClick={handleMenuclose}
-          >
-            <ListItemText primary="Home" />
-            <ListItemIcon>
-              <CheckRoundedIcon color="secondary" />
-            </ListItemIcon>
-          </ListItem>
-          <ListItem
-            button
-            component={NavLink}
-            aria-label="Show Projects Section"
-            to="/following"
-            onClick={handleMenuclose}
-          >
-            <ListItemText primary="Following" />
-            <ListItemIcon>
-              <CheckRoundedIcon color="secondary" />
-            </ListItemIcon>
-          </ListItem>
-        </List>
-      </Menu>
+        {ButtonList()}
+      </FunctionalMenu>
     </React.Fragment>
   );
 }
