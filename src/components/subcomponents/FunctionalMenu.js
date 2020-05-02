@@ -10,6 +10,16 @@ function FunctionalMenu(props) {
       anchorEl={props.anchorEl}
       open={props.handleOpen}
       onClose={props.handleOnClose}
+      anchorReference="anchorEl"
+      anchorOrigin={{
+        vertical: "bottom",
+        horizontal: "center",
+      }}
+      transformOrigin={{
+        vertical: "top",
+        horizontal: "center",
+      }}
+      getContentAnchorEl={null}
     >
       {props.children}
     </Menu>
