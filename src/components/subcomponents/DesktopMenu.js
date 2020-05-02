@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 //Import MaterialUI Components
 import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
-// import Grid from "@material-ui/core/Grid";
+// import Grid from "@material-ui/core/Grid";/
 
 //Import Custom Components
 import PinterestIcon from "../icons/PinterestIcon";
