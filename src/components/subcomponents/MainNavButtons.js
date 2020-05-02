@@ -100,7 +100,6 @@ function MainNavButtons() {
     <React.Fragment>
       <Grid container className={classes.sectionDesktop}>
         <Button
-          style={{ color: "#333" }}
           exact
           component={NavLink}
           to="/"
@@ -113,7 +112,6 @@ function MainNavButtons() {
         <Button
           component={NavLink}
           to="/following"
-          style={{ color: "#8e8e8e" }}
           activeClassName={classes.buttonBackground}
         >
           Following
@@ -123,7 +121,6 @@ function MainNavButtons() {
         <Button
           className={classes.mobileButton}
           endIcon={<ExpandMoreRoundedIcon />}
-          // onClick={toggleDrawer}
           onClick={handleClick}
         >
           Mobile!
