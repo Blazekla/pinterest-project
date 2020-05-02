@@ -10,6 +10,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
+import CheckRoundedIcon from "@material-ui/icons/CheckRounded";
 
 //Import Custom Components
 import FunctionalDrawer from "./FunctionalDrawer";
@@ -69,7 +70,7 @@ function MainNavButtons() {
       <ListItem>
         <ListItemText primary="Following" />
         <ListItemIcon>
-          <ExpandMoreRoundedIcon />
+          <CheckRoundedIcon />
         </ListItemIcon>
       </ListItem>
     </List>
