@@ -12,6 +12,8 @@ import SingleCard from "../components/cards/SingleCard";
 const useStyles = makeStyles((theme) => ({
   outer: {
     marginTop: "5rem",
+    marginLeft: "auto",
+    marginRight: "auto",
   },
 }));
 
