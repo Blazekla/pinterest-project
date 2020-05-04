@@ -12,6 +12,8 @@ import FollowUsers from "../components/subcomponents/FollowUsers";
 const useStyles = makeStyles((theme) => ({
   outer: {
     marginTop: "5rem",
+    marginLeft: "auto",
+    marginRight: "auto",
   },
 }));
 
