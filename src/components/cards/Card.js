@@ -12,6 +12,7 @@ import CardButtons from "./CardButtons";
 const useStyles = makeStyles((theme) => ({
   card: {
     position: "relative",
+    borderRadius: "16px",
   },
   actionArea: {
     cursor: "zoom-in",

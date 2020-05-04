@@ -6,12 +6,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
 import CheckRoundedIcon from "@material-ui/icons/CheckRounded";
-import Menu from "@material-ui/core/Menu";
 import MenuList from "@material-ui/core/MenuList";
 import MenuItem from "@material-ui/core/MenuItem";
 
@@ -52,10 +48,17 @@ const useStyles = makeStyles((theme) => ({
       border: "2px solid #0084ff",
     },
   },
+  menuList: {
+    "&:focus": {
+      outline: "none",
+    },
+  },
 }));
 
 function MainNavButtons() {
   const [anchorEl, setAnchorEl] = useState(null);
+
+  const classes = useStyles();
 
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
@@ -67,7 +70,7 @@ function MainNavButtons() {
 
   //Button list for mobile view
   const ButtonList = () => (
-    <MenuList>
+    <MenuList className={classes.menuList}>
       <MenuItem
         button
         component={NavLink}
@@ -95,7 +98,6 @@ function MainNavButtons() {
     </MenuList>
   );
 
-  const classes = useStyles();
   return (
     <React.Fragment>
       <Grid container className={classes.sectionDesktop}>
