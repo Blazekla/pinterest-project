@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useRouteMatch } from "react-router-dom";
 
 //Import MaterialUI Components
 import { makeStyles } from "@material-ui/core/styles";
@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded";
 import ListItemText from "@material-ui/core/ListItemText";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
 import CheckRoundedIcon from "@material-ui/icons/CheckRounded";
 import MenuList from "@material-ui/core/MenuList";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -49,9 +50,14 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   menuList: {
+    minWidth: "180px",
+    borderRadius: "16px",
     "&:focus": {
       outline: "none",
     },
+  },
+  activeLink: {
+    justifyContent: "flex-end",
   },
 }));
 
@@ -75,14 +81,19 @@ function MainNavButtons() {
         button
         component={NavLink}
         aria-label="Show Projects Section"
+        exact
         to="/"
         onClick={handleMenuclose}
+        // activeClassName={classes.activeLink}
       >
         <ListItemText primary="Home" />
-        {/* <ListItemIcon>
-          <CheckRoundedIcon color="secondary" />
-        </ListItemIcon> */}
+        {useRouteMatch("/").isExact && (
+          <ListItemIcon className={classes.activeLink}>
+            <CheckRoundedIcon color="secondary" />
+          </ListItemIcon>
+        )}
       </MenuItem>
+
       <MenuItem
         button
         component={NavLink}
@@ -91,9 +102,11 @@ function MainNavButtons() {
         onClick={handleMenuclose}
       >
         <ListItemText primary="Following" />
-        {/* <ListItemIcon>
-          <CheckRoundedIcon color="secondary" />
-        </ListItemIcon> */}
+        {useRouteMatch("/following") && (
+          <ListItemIcon className={classes.activeLink}>
+            <CheckRoundedIcon color="secondary" />
+          </ListItemIcon>
+        )}
       </MenuItem>
     </MenuList>
   );

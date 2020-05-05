@@ -2,8 +2,16 @@ import React from "react";
 
 //Import MaterialUI Components
 import Menu from "@material-ui/core/Menu";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  style: {
+    borderRadius: "16px",
+  },
+}));
 
 function FunctionalMenu(props) {
+  const classes = useStyles();
   return (
     <Menu
       id="functional-menu"
@@ -20,6 +28,8 @@ function FunctionalMenu(props) {
         horizontal: "center",
       }}
       getContentAnchorEl={null}
+      // className={classes.style}
+      classes={{ paper: classes.style }}
     >
       {props.children}
     </Menu>

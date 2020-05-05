@@ -15,7 +15,11 @@ const useStyles = makeStyles((theme) => ({
     //
   },
   bottomSection: {
-    //
+    alignContent: "center",
+    flexWrap: "nowrap",
+  },
+  bottomText: {
+    paddingLeft: "1rem",
   },
 }));
 
@@ -33,17 +37,32 @@ function SingleCardInfo(props) {
       </Grid>
       <Grid container item className={classes.middleSection}>
         <Typography>Title Here</Typography>
-        <Typography>Description Here</Typography>
-        <Avatar />
-        <Button>Following</Button>
-        <Button>Photos</Button>
-        <Button>Comments</Button>
-        <Button>Add Photo</Button>
+        <Grid container direction="column" item>
+          <Typography>Description Here</Typography>
+          <Grid container item>
+            <Avatar />
+            <Button>Following</Button>
+          </Grid>
+          <Grid continer item>
+            <Button>Photos</Button>
+            <Button>Comments</Button>
+            <Button>Add Photo</Button>
+          </Grid>
+        </Grid>
       </Grid>
       <Grid container item className={classes.bottomSection}>
-        <Avatar />
-        <Button>AvatarName</Button>
-        <Button>Album Page</Button>
+        <Grid item>
+          <Avatar />
+        </Grid>
+        <Grid container direction="column" item className={classes.bottomText}>
+          <Grid container item>
+            <Button>AvatarName</Button>
+            <Button>Album Page</Button>
+          </Grid>
+          <Grid item>
+            <Typography>Description here</Typography>
+          </Grid>
+        </Grid>
       </Grid>
     </Grid>
   );
