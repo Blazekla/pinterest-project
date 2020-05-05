@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import CreateIcon from "@material-ui/icons/Create";
+import Avatar from "@material-ui/core/Avatar";
 
 //Import Custom Components
 
@@ -17,9 +18,12 @@ const useStyles = makeStyles((theme) => ({
   },
   followerActions: {
     justifyContent: "space-between",
+    flexWrap: "nowrap",
   },
   followerBadges: {
     width: "auto",
+    alignItems: "center",
+    flexWrap: "nowrap",
   },
   emptyFollower: {
     width: " 60px",
@@ -31,9 +35,15 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     borderRadius: "24px",
+    minWidth: "220px",
+    maxHeight: "36px",
     backgroundColor: "#e60023",
     "& span": {
       color: "#fff",
+      width: "100%",
+      display: "block",
+      alignItems: "center",
+      justifyContent: "center",
     },
   },
 }));
@@ -44,7 +54,9 @@ function FollowUsers() {
       <Typography>From people you follow</Typography>
       <Grid container className={classes.followerActions}>
         <Grid container item className={classes.followerBadges}>
-          <Grid item>item 1</Grid>
+          <Grid item>
+            <Avatar />
+          </Grid>
           <Grid item>
             <div className={classes.emptyFollower}></div>
           </Grid>

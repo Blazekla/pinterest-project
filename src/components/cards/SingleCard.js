@@ -5,7 +5,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardMedia from "@material-ui/core/CardMedia";
-import { Typography } from "@material-ui/core";
+
+//Import custom components
+import CardInfo from "./SingleCardInfo";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,7 +43,7 @@ function SingleCard(props) {
           className={classes.mediaArea}
         />
       </CardActionArea>
-      <Typography>Howdy</Typography>
+      <CardInfo />
     </Card>
   );
 }
