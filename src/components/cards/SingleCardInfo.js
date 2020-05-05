@@ -8,6 +8,9 @@ import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    maxWidth: "502px",
+  },
   topButtons: {
     justifyContent: "space-between",
   },
@@ -26,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 function SingleCardInfo(props) {
   const classes = useStyles();
   return (
-    <Grid container>
+    <Grid container className={classes.root}>
       <Grid container item className={classes.topButtons}>
         <Grid item>
           <Button>left side</Button>
@@ -43,7 +46,7 @@ function SingleCardInfo(props) {
             <Avatar />
             <Button>Following</Button>
           </Grid>
-          <Grid continer item>
+          <Grid container item>
             <Button>Photos</Button>
             <Button>Comments</Button>
             <Button>Add Photo</Button>
