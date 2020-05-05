@@ -12,7 +12,6 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 //Import Custom Components
 import SendIcon from "../icons/SendIcon";
 import SaveButton from "./SavePinButton";
-import SavePinButton from "./SavePinButton";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,13 +19,18 @@ const useStyles = makeStyles((theme) => ({
   },
   topButtons: {
     justifyContent: "space-between",
+    margin: "12px",
   },
   middleSection: {
-    //
+    paddingLeft: "1rem",
+    paddingRight: "1rem",
   },
   bottomSection: {
     alignContent: "center",
     flexWrap: "nowrap",
+    paddingLeft: "1rem",
+    paddingRight: "1rem",
+    marginBottom: "60px",
   },
   bottomText: {
     paddingLeft: "1rem",
@@ -50,13 +54,19 @@ function SingleCardInfo(props) {
           </IconButton>
         </Grid>
         <Grid item>
-          <SavePinButton />
+          <SaveButton />
         </Grid>
       </Grid>
       <Grid container item className={classes.middleSection}>
-        <Typography>Title Here</Typography>
+        <Grid item>
+          <Typography>Pin Title Here</Typography>
+        </Grid>
         <Grid container direction="column" item>
-          <Typography>Description Here</Typography>
+          <Typography>
+            Description Here Lorem ipsum dolor sit, amet consectetur adipisicing
+            elit. Odit laborum aut veniam temporibus similique deserunt non. Quo
+            optio quis cum!
+          </Typography>
           <Grid container item>
             <Avatar />
             <Button>Following</Button>
@@ -78,7 +88,9 @@ function SingleCardInfo(props) {
             <Button>Album Page</Button>
           </Grid>
           <Grid item>
-            <Typography>Description here</Typography>
+            <Typography>
+              Description Lorem ipsum, dolor sit amet consectetur
+            </Typography>
           </Grid>
         </Grid>
       </Grid>
