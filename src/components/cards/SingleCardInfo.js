@@ -6,6 +6,13 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
+import IconButton from "@material-ui/core/IconButton";
+import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+
+//Import Custom Components
+import SendIcon from "../icons/SendIcon";
+import SaveButton from "./SavePinButton";
+import SavePinButton from "./SavePinButton";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,6 +31,9 @@ const useStyles = makeStyles((theme) => ({
   bottomText: {
     paddingLeft: "1rem",
   },
+  optionButton: {
+    width: "auto",
+  },
 }));
 
 function SingleCardInfo(props) {
@@ -31,11 +41,16 @@ function SingleCardInfo(props) {
   return (
     <Grid container className={classes.root}>
       <Grid container item className={classes.topButtons}>
-        <Grid item>
-          <Button>left side</Button>
+        <Grid container item className={classes.optionButton}>
+          <IconButton>
+            <MoreHorizIcon />
+          </IconButton>
+          <IconButton>
+            <SendIcon />
+          </IconButton>
         </Grid>
         <Grid item>
-          <Button>Right Side</Button>
+          <SavePinButton />
         </Grid>
       </Grid>
       <Grid container item className={classes.middleSection}>

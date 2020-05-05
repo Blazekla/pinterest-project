@@ -188,7 +188,7 @@ function NavBar() {
               onClick={handleMobileMenuOpen}
               color="inherit"
             >
-              <MessagesIcon />
+              <AccountCircle />
             </IconButton>
           </div> */}
         </Toolbar>

@@ -41,12 +41,19 @@ const useStyles = makeStyles((theme) => ({
   mobileButton: {
     borderRadius: "24px",
     backgroundColor: "#111",
-    color: "#FFF",
+    color: "#fff",
     "&:hover": {
       backgroundColor: "#111",
     },
     "&:focus": {
       border: "2px solid #0084ff",
+    },
+  },
+  mobileActive: {
+    borderRadius: "24px",
+    backgroundColor: "rgba(0,0,0,)",
+    "&:hover": {
+      backgroundColor: "#efefef",
     },
   },
   menuList: {
@@ -56,8 +63,12 @@ const useStyles = makeStyles((theme) => ({
       outline: "none",
     },
   },
-  activeLink: {
+
+  checkecIcon: {
     justifyContent: "flex-end",
+  },
+  buttonDefault: {
+    borderRadius: "24px",
   },
 }));
 
@@ -65,6 +76,10 @@ function MainNavButtons() {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const classes = useStyles();
+
+  //Used to check route and grant css to mobile button
+  const following = useRouteMatch("/following");
+  const home = useRouteMatch("/").isExact;
 
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
@@ -84,11 +99,10 @@ function MainNavButtons() {
         exact
         to="/"
         onClick={handleMenuclose}
-        // activeClassName={classes.activeLink}
       >
         <ListItemText primary="Home" />
         {useRouteMatch("/").isExact && (
-          <ListItemIcon className={classes.activeLink}>
+          <ListItemIcon className={classes.checkecIcon}>
             <CheckRoundedIcon color="secondary" />
           </ListItemIcon>
         )}
@@ -103,7 +117,7 @@ function MainNavButtons() {
       >
         <ListItemText primary="Following" />
         {useRouteMatch("/following") && (
-          <ListItemIcon className={classes.activeLink}>
+          <ListItemIcon className={classes.checkecIcon}>
             <CheckRoundedIcon color="secondary" />
           </ListItemIcon>
         )}
@@ -118,8 +132,8 @@ function MainNavButtons() {
           exact
           component={NavLink}
           to="/"
-          className={classes.test}
-          activeClassName={classes.buttonBackground}
+          className={classes.buttonDefault}
+          activeClassName={classes.activeLink}
         >
           Home
         </Button>
@@ -127,6 +141,7 @@ function MainNavButtons() {
         <Button
           component={NavLink}
           to="/following"
+          className={classes.buttonDefault}
           activeClassName={classes.buttonBackground}
         >
           Following
@@ -134,11 +149,13 @@ function MainNavButtons() {
       </Grid>
       <Grid container className={classes.sectionMobile}>
         <Button
-          className={classes.mobileButton}
+          className={
+            following || home ? classes.mobileButton : classes.mobileActive
+          }
           endIcon={<ExpandMoreRoundedIcon />}
           onClick={handleClick}
         >
-          Mobile!
+          {useRouteMatch("/following") ? "Following" : "Home"}
         </Button>
       </Grid>
 
