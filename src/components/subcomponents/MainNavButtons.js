@@ -133,7 +133,7 @@ function MainNavButtons() {
           component={NavLink}
           to="/"
           className={classes.buttonDefault}
-          activeClassName={classes.activeLink}
+          activeClassName={classes.buttonBackground}
         >
           Home
         </Button>

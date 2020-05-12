@@ -4,6 +4,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
+import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,7 +28,8 @@ const useStyles = makeStyles((theme) => ({
     borderBottomRightRadius: "0",
     borderTopLeftRadius: "12px",
     borderBottomLeftRadius: "12px",
-    backgroundColor: "#fff",
+    // backgroundColor: "#fff",
+    backgroundColor: "#efefef",
   },
 }));
 function SavePinButton() {
@@ -36,7 +38,11 @@ function SavePinButton() {
   return (
     <Grid container className={classes.root}>
       <Grid item>
-        <Button variant="contained" className={classes.albumButton}>
+        <Button
+          variant="contained"
+          className={classes.albumButton}
+          endIcon={<ExpandMoreRoundedIcon />}
+        >
           Album{" "}
         </Button>
       </Grid>
