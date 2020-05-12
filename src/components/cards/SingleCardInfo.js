@@ -25,18 +25,31 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: "1rem",
     paddingRight: "1rem",
   },
+  followingSection: {
+    justifyContent: "space-between",
+  },
+  middleActionButtons: {
+    marginTop: "40px",
+    paddingTop: "16px",
+    paddingBottom: "16px",
+  },
   bottomSection: {
     alignContent: "center",
     flexWrap: "nowrap",
     paddingLeft: "1rem",
     paddingRight: "1rem",
-    marginBottom: "60px",
+    marginBottom: "20px",
+    marginTop: "40px",
   },
   bottomText: {
     paddingLeft: "1rem",
   },
   optionButton: {
     width: "auto",
+  },
+  buttonStyling: {
+    backgroundColor: "@efefef",
+    borderRadius: "30px",
   },
 }));
 
@@ -67,14 +80,16 @@ function SingleCardInfo(props) {
             elit. Odit laborum aut veniam temporibus similique deserunt non. Quo
             optio quis cum!
           </Typography>
-          <Grid container item>
+          <Grid container item className={classes.followingSection}>
             <Avatar />
             <Button>Following</Button>
           </Grid>
-          <Grid container item>
+          <Grid container item className={classes.middleActionButtons}>
             <Button>Photos</Button>
             <Button>Comments</Button>
-            <Button>Add Photo</Button>
+            <Button variant="contained" className={classes.buttonStyling}>
+              Add Photo
+            </Button>
           </Grid>
         </Grid>
       </Grid>
