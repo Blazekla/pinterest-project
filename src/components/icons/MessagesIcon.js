@@ -8,7 +8,7 @@ function MessagesIcon() {
       width="24"
       viewBox="0 0 24 24"
       aria-hidden="true"
-      aria-label=""
+      aria-label="message"
       role="img"
     >
       <path
