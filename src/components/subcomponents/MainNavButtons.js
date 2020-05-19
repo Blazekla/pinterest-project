@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
-  checkecIcon: {
+  checkedIcon: {
     justifyContent: "flex-end",
   },
   buttonDefault: {
@@ -102,7 +102,7 @@ function MainNavButtons() {
       >
         <ListItemText primary="Home" />
         {useRouteMatch("/").isExact && (
-          <ListItemIcon className={classes.checkecIcon}>
+          <ListItemIcon className={classes.checkedIcon}>
             <CheckRoundedIcon color="secondary" />
           </ListItemIcon>
         )}
@@ -117,7 +117,7 @@ function MainNavButtons() {
       >
         <ListItemText primary="Following" />
         {useRouteMatch("/following") && (
-          <ListItemIcon className={classes.checkecIcon}>
+          <ListItemIcon className={classes.checkedIcon}>
             <CheckRoundedIcon color="secondary" />
           </ListItemIcon>
         )}

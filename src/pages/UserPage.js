@@ -10,7 +10,6 @@ import IconButton from "@material-ui/core/IconButton";
 import Container from "@material-ui/core/Container";
 
 import CreateRoundedIcon from "@material-ui/icons/CreateRounded";
-import AddRoundedIcon from "@material-ui/icons/AddRounded";
 
 //Import Custom Components
 import Layout from "../components/Layout";
@@ -20,8 +19,6 @@ import AddIcon from "../components/icons/AddIcon";
 const useStyles = makeStyles((theme) => ({
   outer: {
     marginTop: "5rem",
-    // display: "flex",
-    // flexDirection: "column",
   },
   mainSection: {
     //
