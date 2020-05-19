@@ -28,7 +28,6 @@ function FunctionalMenu(props) {
         horizontal: "center",
       }}
       getContentAnchorEl={null}
-      // className={classes.style}
       classes={{ paper: classes.style }}
     >
       {props.children}

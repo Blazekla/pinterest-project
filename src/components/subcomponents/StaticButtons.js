@@ -7,20 +7,21 @@ import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import Badge from "@material-ui/core/Badge";
 import Button from "@material-ui/core/Button";
-import MenuList from "@material-ui/core/MenuList";
-import MenuItem from "@material-ui/core/MenuItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import Typography from "@material-ui/core/Typography";
+// import MenuList from "@material-ui/core/MenuList";
+// import MenuItem from "@material-ui/core/MenuItem";
+// import ListItemText from "@material-ui/core/ListItemText";
+// import ListItemIcon from "@material-ui/core/ListItemIcon";
+// import Typography from "@material-ui/core/Typography";
 
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded";
-import CallMadeRoundedIcon from "@material-ui/icons/CallMadeRounded";
+// import CallMadeRoundedIcon from "@material-ui/icons/CallMadeRounded";
 
 //Import Custom Components
 import MessagesIcon from "../icons/MessagesIcon";
 import FunctionalMenu from "./FunctionalMenu";
+import OptionMenuItems from "./OptionsMenuItems";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -28,17 +29,6 @@ const useStyles = makeStyles((theme) => ({
   },
   iconBackground: {
     fill: "#111",
-  },
-  menuList: {
-    minWidth: "180px",
-    maxWidth: "360px",
-    borderRadius: "16px",
-    "&:focus": {
-      outline: "none",
-    },
-  },
-  checkedIcon: {
-    justifyContent: "flex-end",
   },
 }));
 
@@ -53,98 +43,6 @@ function StaticButtons(props) {
     setAnchorEl(null);
   };
 
-  const buttonSelection = () => (
-    <MenuList className={classes.menuList}>
-      <Typography>Accounts</Typography>
-      <MenuItem
-        button
-        component={NavLink}
-        aria-label="test item for now"
-        exact
-        to="/"
-        onClick={handleMenuclose}
-      >
-        <ListItemText primary="Add another account" />
-      </MenuItem>
-      <MenuItem
-        button
-        component={NavLink}
-        aria-label="test item for now"
-        exact
-        to="/"
-        onClick={handleMenuclose}
-      >
-        <ListItemText primary="Add a free business account" />
-      </MenuItem>
-      <ListItemText>More Options</ListItemText>
-      <MenuItem
-        button
-        component={NavLink}
-        aria-label="test item for now"
-        exact
-        to="/"
-        onClick={handleMenuclose}
-      >
-        <ListItemText primary="Settings" />
-      </MenuItem>
-      <MenuItem
-        button
-        component={NavLink}
-        aria-label="test item for now"
-        exact
-        to="/"
-        onClick={handleMenuclose}
-      >
-        <ListItemText primary="Tune your home feed" />
-      </MenuItem>
-      <MenuItem
-        button
-        component={NavLink}
-        aria-label="test item for now"
-        exact
-        to="/"
-        onClick={handleMenuclose}
-      >
-        <ListItemText primary="Install the Windows app" />
-      </MenuItem>
-      <MenuItem
-        button
-        component={NavLink}
-        aria-label="test item for now"
-        exact
-        to="/"
-        onClick={handleMenuclose}
-      >
-        <ListItemText primary="Get help" />
-        <ListItemIcon className={classes.checkedIcon}>
-          <CallMadeRoundedIcon />
-        </ListItemIcon>
-      </MenuItem>
-      <MenuItem
-        button
-        component={NavLink}
-        aria-label="test item for now"
-        exact
-        to="/"
-        onClick={handleMenuclose}
-      >
-        <ListItemText primary="See terms and privacy" />
-        <ListItemIcon className={classes.checkedIcon}>
-          <CallMadeRoundedIcon />
-        </ListItemIcon>
-      </MenuItem>
-      <MenuItem
-        button
-        component={NavLink}
-        aria-label="test item for now"
-        exact
-        to="/"
-        onClick={handleMenuclose}
-      >
-        <ListItemText primary="Log out" />
-      </MenuItem>
-    </MenuList>
-  );
   const classes = useStyles();
   return (
     <React.Fragment>
@@ -186,7 +84,7 @@ function StaticButtons(props) {
         handleOpen={Boolean(anchorEl)}
         handleOnClose={handleMenuclose}
       >
-        {buttonSelection()}
+        <OptionMenuItems handleClose={handleMenuclose} />
       </FunctionalMenu>
     </React.Fragment>
   );
