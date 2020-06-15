@@ -15,28 +15,30 @@ import CreateRoundedIcon from "@material-ui/icons/CreateRounded";
 import Layout from "../components/Layout";
 import SendIcon from "../components/icons/SendIcon";
 import AddIcon from "../components/icons/AddIcon";
+import SelectionButtons from "../components/subcomponents/SelectionButtons";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   outer: {
-    marginTop: "5rem",
+    marginTop: "5rem"
   },
   mainSection: {
-    //
+    marginLeft: "auto",
+    marginRight: "auto"
   },
   topSection: {
-    maxWidth: "800px",
-    marginLeft: "auto",
-    marginRight: "auto",
+    maxWidth: "800px"
+    // marginLeft: "auto",
+    // marginRight: "auto"
   },
   topButtons: {},
   nameAvatar: {
     justifyContent: "space-between",
-    maxWidth: "800px",
-    marginLeft: "auto",
-    marginRight: "auto",
+    maxWidth: "800px"
+    // marginLeft: "auto",
+    // marginRight: "auto"
   },
   selectionButtons: {},
-  boardLayout: {},
+  boardLayout: {}
 }));
 
 function UserPage() {
@@ -44,7 +46,12 @@ function UserPage() {
   return (
     <Layout>
       <Container maxWidth="xl" className={classes.outer}>
-        <Grid container className={classes.mainSection} direction="column">
+        <Grid
+          container
+          alignItems="center"
+          className={classes.mainSection}
+          direction="column"
+        >
           <Grid container item className={classes.topSection}>
             <Grid container item className={classes.topButtons}>
               <IconButton>
@@ -63,7 +70,14 @@ function UserPage() {
             <Typography>John Jones</Typography>
             <Avatar />
           </Grid>
-          <Grid container item className={classes.selectionButtons}></Grid>
+          <Grid
+            container
+            justify="center"
+            item
+            className={classes.selectionButtons}
+          >
+            <SelectionButtons />
+          </Grid>
           <Grid container item className={classes.boardLayout}></Grid>
         </Grid>
       </Container>
