@@ -11,6 +11,15 @@ const useStyles = makeStyles(theme => ({
   },
   button: {
     borderRadius: "32px"
+  },
+  buttonBackground: {
+    backgroundColor: "#111",
+    "&:hover": {
+      backgroundColor: "#111"
+    },
+    "& span": {
+      color: "#fff"
+    }
   }
 }));
 
@@ -22,9 +31,9 @@ function SelectionButtons() {
       <Grid item>
         <Button
           component={NavLink}
-          to={`${url}/Boards`}
-          variant="contained"
+          to={`${url}/boards`}
           className={classes.button}
+          activeClassName={classes.buttonBackground}
         >
           Boards
         </Button>
@@ -32,9 +41,9 @@ function SelectionButtons() {
       <Grid item>
         <Button
           component={NavLink}
-          to={`${url}/Pins`}
-          variant="contained"
+          to={`${url}/pins`}
           className={classes.button}
+          activeClassName={classes.buttonBackground}
         >
           Pins
         </Button>
@@ -42,9 +51,9 @@ function SelectionButtons() {
       <Grid item>
         <Button
           component={NavLink}
-          to={`${url}/Tries`}
-          variant="contained"
+          to={`${url}/tries`}
           className={classes.button}
+          activeClassName={classes.buttonBackground}
         >
           Tries
         </Button>
@@ -52,9 +61,9 @@ function SelectionButtons() {
       <Grid item>
         <Button
           component={NavLink}
-          to={`${url}/Topics`}
-          variant="contained"
+          to={`${url}/topics`}
           className={classes.button}
+          activeClassName={classes.buttonBackground}
         >
           Topics
         </Button>

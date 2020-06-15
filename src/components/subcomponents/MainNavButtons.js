@@ -15,27 +15,30 @@ import MenuItem from "@material-ui/core/MenuItem";
 //Import Custom Components
 import FunctionalMenu from "./FunctionalMenu";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   sectionDesktop: {
     display: "none",
     [theme.breakpoints.up("md")]: {
       display: "flex",
       alignItems: "center",
-      width: "auto",
-    },
+      width: "auto"
+    }
   },
   sectionMobile: {
     display: "flex",
     width: "auto",
     [theme.breakpoints.up("md")]: {
-      display: "none",
-    },
+      display: "none"
+    }
   },
   buttonBackground: {
     backgroundColor: "#111",
     "& span": {
-      color: "#fff",
+      color: "#fff"
     },
+    "&:hover": {
+      backgroundColor: "#111"
+    }
   },
 
   mobileButton: {
@@ -43,33 +46,33 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#111",
     color: "#fff",
     "&:hover": {
-      backgroundColor: "#111",
+      backgroundColor: "#111"
     },
     "&:focus": {
-      border: "2px solid #0084ff",
-    },
+      border: "2px solid #0084ff"
+    }
   },
   mobileActive: {
     borderRadius: "24px",
     backgroundColor: "rgba(0,0,0,)",
     "&:hover": {
-      backgroundColor: "#efefef",
-    },
+      backgroundColor: "#efefef"
+    }
   },
   menuList: {
     minWidth: "180px",
     borderRadius: "16px",
     "&:focus": {
-      outline: "none",
-    },
+      outline: "none"
+    }
   },
 
   checkedIcon: {
-    justifyContent: "flex-end",
+    justifyContent: "flex-end"
   },
   buttonDefault: {
-    borderRadius: "24px",
-  },
+    borderRadius: "24px"
+  }
 }));
 
 function MainNavButtons() {
@@ -81,7 +84,7 @@ function MainNavButtons() {
   const following = useRouteMatch("/following");
   const home = useRouteMatch("/").isExact;
 
-  const handleClick = (e) => {
+  const handleClick = e => {
     setAnchorEl(e.currentTarget);
   };
 
