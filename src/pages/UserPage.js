@@ -82,7 +82,7 @@ function UserPage() {
           <Grid container item className={classes.boardLayout}>
             <Switch>
               <Route exact path={path}>
-                <h3>Default Route</h3>
+                <h3>Topics Section</h3>
               </Route>
               <Route path={`${path}/:topicId`}>
                 <Topic />
