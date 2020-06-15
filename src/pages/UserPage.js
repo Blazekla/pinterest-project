@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Switch, Route, useParams, useRouteMatch } from "react-router-dom";
 //Import MaterialUI Components
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -43,6 +43,7 @@ const useStyles = makeStyles(theme => ({
 
 function UserPage() {
   const classes = useStyles();
+  let { path } = useRouteMatch();
   return (
     <Layout>
       <Container maxWidth="xl" className={classes.outer}>
@@ -78,10 +79,28 @@ function UserPage() {
           >
             <SelectionButtons />
           </Grid>
-          <Grid container item className={classes.boardLayout}></Grid>
+          <Grid container item className={classes.boardLayout}>
+            <Switch>
+              <Route exact path={path}>
+                <h3>Default Route</h3>
+              </Route>
+              <Route path={`${path}/:topicId`}>
+                <Topic />
+              </Route>
+            </Switch>
+          </Grid>
         </Grid>
       </Container>
     </Layout>
+  );
+}
+
+function Topic() {
+  let { topicId } = useParams();
+  return (
+    <div>
+      <h1>{topicId}</h1>
+    </div>
   );
 }
 
