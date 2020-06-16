@@ -16,6 +16,8 @@ import Layout from "../components/Layout";
 import SendIcon from "../components/icons/SendIcon";
 import AddIcon from "../components/icons/AddIcon";
 import SelectionButtons from "../components/subcomponents/SelectionButtons";
+import TopicComponent from "../components/subcomponents/TopicsGrid";
+import TopicsGrid from "../components/subcomponents/TopicsGrid";
 
 const useStyles = makeStyles(theme => ({
   outer: {
@@ -82,7 +84,7 @@ function UserPage() {
           <Grid container item className={classes.boardLayout}>
             <Switch>
               <Route exact path={path}>
-                <h3>Topics Section</h3>
+                <TopicsGrid />
               </Route>
               <Route path={`${path}/:topicId`}>
                 <Topic />
@@ -98,9 +100,7 @@ function UserPage() {
 function Topic() {
   let { topicId } = useParams();
   return (
-    <div>
-      <h1>{topicId}</h1>
-    </div>
+    <div>{topicId === "topics" ? <TopicsGrid /> : <h1>{topicId}</h1>}</div>
   );
 }
 
