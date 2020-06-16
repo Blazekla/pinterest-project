@@ -11,11 +11,13 @@ import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    //
+    paddingTop: "24px",
+    paddingBottom: "24px"
   },
-  gridImage: {
-    paddingRight: "8px",
-    paddingLeft: "8px"
+  gridImage: {},
+  singleTopic: {
+    padding: "24px",
+    marginLeft: "-24px"
   },
   card: {
     width: "236px",
@@ -27,33 +29,43 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "24px"
   },
   gridText: {
-    paddingRight: "8px",
-    paddingLeft: "8px",
     width: "100%",
     marginTop: "10px"
   }
 }));
 
 function TopicsGrid() {
+  const count = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
   const classes = useStyles();
   return (
-    <Grid container direction="column" alignItems="center">
-      <Grid item className={classes.gridImage}>
-        <Card className={classes.card}>
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              height="236"
-              image="https://source.unsplash.com/random"
-            />
-          </CardActionArea>
-        </Card>
-      </Grid>
-      <Grid item className={classes.gridText}>
-        <Button variant="contained" className={classes.button}>
-          follow
-        </Button>
-      </Grid>
+    <Grid
+      container
+      alignItems="center"
+      justify="center"
+      className={classes.root}
+    >
+      {count.map(id => {
+        return (
+          <div className={classes.singleTopic}>
+            <Grid item key={id} className={classes.gridImage}>
+              <Card className={classes.card}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    height="236"
+                    image="https://source.unsplash.com/random"
+                  />
+                </CardActionArea>
+              </Card>
+            </Grid>
+            <Grid item className={classes.gridText}>
+              <Button variant="contained" className={classes.button}>
+                follow
+              </Button>
+            </Grid>
+          </div>
+        );
+      })}
     </Grid>
   );
 }

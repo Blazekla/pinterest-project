@@ -16,7 +16,6 @@ import Layout from "../components/Layout";
 import SendIcon from "../components/icons/SendIcon";
 import AddIcon from "../components/icons/AddIcon";
 import SelectionButtons from "../components/subcomponents/SelectionButtons";
-import TopicComponent from "../components/subcomponents/TopicsGrid";
 import TopicsGrid from "../components/subcomponents/TopicsGrid";
 
 const useStyles = makeStyles(theme => ({
