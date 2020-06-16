@@ -80,13 +80,34 @@ function UserPage() {
           >
             <SelectionButtons />
           </Grid>
-          <Grid container item className={classes.boardLayout}>
+          <Grid container justify="center" item className={classes.boardLayout}>
             <Switch>
               <Route exact path={path}>
                 <TopicsGrid />
               </Route>
-              <Route path={`${path}/:topicId`}>
-                <Topic />
+              <Route path={`${path}/topics`}>
+                <TopicsGrid />
+              </Route>
+              <Route path={`${path}/tries`}>
+                <div style={{ textAlign: "center" }}>
+                  <p>
+                    <strong>Pins you try live here</strong>
+                  </p>
+                  <p>
+                    Add notes and photos to recipes you made, places you
+                    traveled and other ideas you tried
+                  </p>
+                </div>
+              </Route>
+              <Route path={`${path}/pins`}>
+                <div style={{ maxWidth: "800px", width: "100%" }}>
+                  <span>0 pins</span>
+                </div>
+              </Route>
+              <Route path={`${path}/boards`}>
+                <div style={{ maxWidth: "800px", width: "100%" }}>
+                  <p>Create board</p>
+                </div>
               </Route>
             </Switch>
           </Grid>
@@ -96,11 +117,11 @@ function UserPage() {
   );
 }
 
-function Topic() {
-  let { topicId } = useParams();
-  return (
-    <div>{topicId === "topics" ? <TopicsGrid /> : <h1>{topicId}</h1>}</div>
-  );
-}
+// function Topic() {
+//   let { topicId } = useParams();
+//   return (
+//     <div>{topicId === "topics" ? <TopicsGrid /> : <h1>{topicId}</h1>}</div>
+//   );
+// }
 
 export default UserPage;

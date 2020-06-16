@@ -79,21 +79,6 @@ const useStyles = makeStyles(theme => ({
 
 function NavBar() {
   const classes = useStyles();
-  // const [anchorEl, setAnchorEl] = React.useState(null);
-  // const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
-  // const handleProfileMenuOpen = event => {
-  //   setAnchorEl(event.currentTarget);
-  // };
-
-  // const handleMobileMenuClose = () => {
-  //   setMobileMoreAnchorEl(null);
-  // };
-
-  // const handleMenuClose = () => {
-  //   setAnchorEl(null);
-  //   handleMobileMenuClose();
-  // };
 
   return (
     <React.Fragment>
