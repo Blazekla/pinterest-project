@@ -1,11 +1,11 @@
 import React from "react";
-import { Switch, Route, useParams, useRouteMatch } from "react-router-dom";
+import { Switch, Route, useRouteMatch } from "react-router-dom";
 //Import MaterialUI Components
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
-// import Button from "@material-ui/core/Button";
+
 import IconButton from "@material-ui/core/IconButton";
 import Container from "@material-ui/core/Container";
 
@@ -116,12 +116,5 @@ function UserPage() {
     </Layout>
   );
 }
-
-// function Topic() {
-//   let { topicId } = useParams();
-//   return (
-//     <div>{topicId === "topics" ? <TopicsGrid /> : <h1>{topicId}</h1>}</div>
-//   );
-// }
 
 export default UserPage;
