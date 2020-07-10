@@ -23,24 +23,30 @@ import MessagesIcon from "../icons/MessagesIcon";
 import FunctionalMenu from "./FunctionalMenu";
 import OptionMenuItems from "./OptionsMenuItems";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   container: {
-    width: "auto",
+    width: "auto"
   },
   iconBackground: {
-    fill: "#111",
-  },
+    fill: "#111"
+  }
 }));
 
 function StaticButtons(props) {
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorExpandEl, setAnchorExpandEl] = useState(null);
+  const [anchorUpdateEl, setAnchorUpdateEl] = useState(null);
 
-  const handleClick = (e) => {
-    setAnchorEl(e.currentTarget);
+  const handleExpandMoreClick = e => {
+    setAnchorExpandEl(e.currentTarget);
+  };
+
+  const handleUpdateClick = e => {
+    setAnchorUpdateEl(e.currentTarget);
   };
 
   const handleMenuclose = () => {
-    setAnchorEl(null);
+    setAnchorExpandEl(null);
+    setAnchorUpdateEl(null);
   };
 
   const classes = useStyles();
@@ -48,7 +54,11 @@ function StaticButtons(props) {
     <React.Fragment>
       <Grid container wrap="nowrap" className={classes.container}>
         <Grid item>
-          <IconButton aria-label="show 17 new notifications" color="inherit">
+          <IconButton
+            aria-label="show 17 new notifications"
+            color="inherit"
+            onClick={handleUpdateClick}
+          >
             <Badge badgeContent={17} color="secondary">
               <NotificationsIcon />
             </Badge>
@@ -72,16 +82,25 @@ function StaticButtons(props) {
           <IconButton
             aria-label="show more options vertical icon"
             color="inherit"
-            onClick={handleClick}
+            onClick={handleExpandMoreClick}
           >
             <ExpandMoreRoundedIcon />
           </IconButton>
         </Grid>
       </Grid>
       <FunctionalMenu
-        id="minor functional menu"
-        anchorEl={anchorEl}
-        handleOpen={Boolean(anchorEl)}
+        id="Update menu"
+        anchorEl={anchorUpdateEl}
+        handleOpen={Boolean(anchorUpdateEl)}
+        handleOnClose={handleMenuclose}
+      >
+        {/* <OptionMenuItems handleClose={handleMenuclose} /> */}
+        <div>howdy</div>
+      </FunctionalMenu>
+      <FunctionalMenu
+        id="Expand More menu"
+        anchorEl={anchorExpandEl}
+        handleOpen={Boolean(anchorExpandEl)}
         handleOnClose={handleMenuclose}
       >
         <OptionMenuItems handleClose={handleMenuclose} />

@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 //Import MaterialUI Components
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles({
   list: {
-    width: 250,
-  },
+    width: 250
+  }
 });
 
 function FunctionalDrawer(props) {
