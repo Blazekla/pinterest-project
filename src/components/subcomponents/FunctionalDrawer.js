@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 
 //Import MaterialUI Components
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles({
   list: {
@@ -16,7 +16,12 @@ function FunctionalDrawer(props) {
 
   return (
     <React.Fragment>
-      <Drawer anchor={props.anchor} open={props.open} onClose={props.close}>
+      <Drawer
+        anchor={props.anchor}
+        open={props.open}
+        onClose={props.close}
+        className={classes.list}
+      >
         {props.children}
       </Drawer>
     </React.Fragment>

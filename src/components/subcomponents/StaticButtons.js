@@ -21,6 +21,7 @@ import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded";
 //Import Custom Components
 import MessagesIcon from "../icons/MessagesIcon";
 import FunctionalMenu from "./FunctionalMenu";
+import FunctionalDrawer from "./FunctionalDrawer";
 import OptionMenuItems from "./OptionsMenuItems";
 
 const useStyles = makeStyles(theme => ({
@@ -35,6 +36,7 @@ const useStyles = makeStyles(theme => ({
 function StaticButtons(props) {
   const [anchorExpandEl, setAnchorExpandEl] = useState(null);
   const [anchorUpdateEl, setAnchorUpdateEl] = useState(null);
+  const [open, setOpen] = useState(false);
 
   const handleExpandMoreClick = e => {
     setAnchorExpandEl(e.currentTarget);
@@ -44,9 +46,14 @@ function StaticButtons(props) {
     setAnchorUpdateEl(e.currentTarget);
   };
 
-  const handleMenuclose = () => {
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
     setAnchorExpandEl(null);
     setAnchorUpdateEl(null);
+    setOpen(false);
   };
 
   const classes = useStyles();
@@ -65,7 +72,7 @@ function StaticButtons(props) {
           </IconButton>
         </Grid>
         <Grid item>
-          <IconButton>
+          <IconButton onClick={handleDrawerOpen}>
             <MessagesIcon />
           </IconButton>
         </Grid>
@@ -88,22 +95,24 @@ function StaticButtons(props) {
           </IconButton>
         </Grid>
       </Grid>
+      <FunctionalDrawer anchor="right" open={open} close={handleClose}>
+        <div>Drawer here</div>
+      </FunctionalDrawer>
       <FunctionalMenu
         id="Update menu"
         anchorEl={anchorUpdateEl}
         handleOpen={Boolean(anchorUpdateEl)}
-        handleOnClose={handleMenuclose}
+        handleOnClose={handleClose}
       >
-        {/* <OptionMenuItems handleClose={handleMenuclose} /> */}
         <div>howdy</div>
       </FunctionalMenu>
       <FunctionalMenu
         id="Expand More menu"
         anchorEl={anchorExpandEl}
         handleOpen={Boolean(anchorExpandEl)}
-        handleOnClose={handleMenuclose}
+        handleOnClose={handleClose}
       >
-        <OptionMenuItems handleClose={handleMenuclose} />
+        <OptionMenuItems handleClose={handleClose} />
       </FunctionalMenu>
     </React.Fragment>
   );
