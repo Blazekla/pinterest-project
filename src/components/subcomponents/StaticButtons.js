@@ -21,26 +21,40 @@ import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded";
 //Import Custom Components
 import MessagesIcon from "../icons/MessagesIcon";
 import FunctionalMenu from "./FunctionalMenu";
+import FunctionalDrawer from "./FunctionalDrawer";
 import OptionMenuItems from "./OptionsMenuItems";
+import UpdatesMenu from "./UpdatesMenu";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   container: {
-    width: "auto",
+    width: "auto"
   },
   iconBackground: {
-    fill: "#111",
-  },
+    fill: "#111"
+  }
 }));
 
 function StaticButtons(props) {
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorExpandEl, setAnchorExpandEl] = useState(null);
+  const [anchorUpdateEl, setAnchorUpdateEl] = useState(null);
+  const [open, setOpen] = useState(false);
 
-  const handleClick = (e) => {
-    setAnchorEl(e.currentTarget);
+  const handleExpandMoreClick = e => {
+    setAnchorExpandEl(e.currentTarget);
   };
 
-  const handleMenuclose = () => {
-    setAnchorEl(null);
+  const handleUpdateClick = e => {
+    setAnchorUpdateEl(e.currentTarget);
+  };
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setAnchorExpandEl(null);
+    setAnchorUpdateEl(null);
+    setOpen(false);
   };
 
   const classes = useStyles();
@@ -48,14 +62,18 @@ function StaticButtons(props) {
     <React.Fragment>
       <Grid container wrap="nowrap" className={classes.container}>
         <Grid item>
-          <IconButton aria-label="show 17 new notifications" color="inherit">
+          <IconButton
+            aria-label="show 17 new notifications"
+            color="inherit"
+            onClick={handleUpdateClick}
+          >
             <Badge badgeContent={17} color="secondary">
               <NotificationsIcon />
             </Badge>
           </IconButton>
         </Grid>
         <Grid item>
-          <IconButton>
+          <IconButton onClick={handleDrawerOpen}>
             <MessagesIcon />
           </IconButton>
         </Grid>
@@ -72,19 +90,30 @@ function StaticButtons(props) {
           <IconButton
             aria-label="show more options vertical icon"
             color="inherit"
-            onClick={handleClick}
+            onClick={handleExpandMoreClick}
           >
             <ExpandMoreRoundedIcon />
           </IconButton>
         </Grid>
       </Grid>
+      <FunctionalDrawer anchor="right" open={open} close={handleClose}>
+        <div>Drawer here</div>
+      </FunctionalDrawer>
       <FunctionalMenu
-        id="minor functional menu"
-        anchorEl={anchorEl}
-        handleOpen={Boolean(anchorEl)}
-        handleOnClose={handleMenuclose}
+        id="Update menu"
+        anchorEl={anchorUpdateEl}
+        handleOpen={Boolean(anchorUpdateEl)}
+        handleOnClose={handleClose}
       >
-        <OptionMenuItems handleClose={handleMenuclose} />
+        <UpdatesMenu />
+      </FunctionalMenu>
+      <FunctionalMenu
+        id="Expand More menu"
+        anchorEl={anchorExpandEl}
+        handleOpen={Boolean(anchorExpandEl)}
+        handleOnClose={handleClose}
+      >
+        <OptionMenuItems handleClose={handleClose} />
       </FunctionalMenu>
     </React.Fragment>
   );
