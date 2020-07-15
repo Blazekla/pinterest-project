@@ -23,6 +23,7 @@ import MessagesIcon from "../icons/MessagesIcon";
 import FunctionalMenu from "./FunctionalMenu";
 import FunctionalDrawer from "./FunctionalDrawer";
 import OptionMenuItems from "./OptionsMenuItems";
+import UpdatesMenu from "./UpdatesMenu";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -104,7 +105,7 @@ function StaticButtons(props) {
         handleOpen={Boolean(anchorUpdateEl)}
         handleOnClose={handleClose}
       >
-        <div>howdy</div>
+        <UpdatesMenu />
       </FunctionalMenu>
       <FunctionalMenu
         id="Expand More menu"
