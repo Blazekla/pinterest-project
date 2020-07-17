@@ -7,6 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import Badge from "@material-ui/core/Badge";
 import Button from "@material-ui/core/Button";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 // import MenuList from "@material-ui/core/MenuList";
 // import MenuItem from "@material-ui/core/MenuItem";
 // import ListItemText from "@material-ui/core/ListItemText";
@@ -50,11 +51,15 @@ function StaticButtons(props) {
   const handleDrawerOpen = () => {
     setOpen(true);
   };
+  const toggleDrawerOpen = () => {
+    setOpen(!open);
+  };
 
   const handleClose = () => {
     setAnchorExpandEl(null);
     setAnchorUpdateEl(null);
     setOpen(false);
+    console.log("clicked away");
   };
 
   const classes = useStyles();
@@ -73,10 +78,20 @@ function StaticButtons(props) {
           </IconButton>
         </Grid>
         <Grid item>
-          <IconButton onClick={handleDrawerOpen}>
+          <IconButton
+            //  onClick={handleDrawerOpen}
+            onClick={toggleDrawerOpen}
+          >
             <MessagesIcon />
           </IconButton>
         </Grid>
+        {open && (
+          <FunctionalDrawer anchor="right" open={open} close={handleClose}>
+            <div>Drawer here</div>
+          </FunctionalDrawer>
+        )}
+        {/* <ClickAwayListener onClickAway={handleClose}> */}
+        {/* </ClickAwayListener> */}
         <Grid item></Grid>
         <Button
           style={{ color: "#8e8e8e" }}
@@ -96,9 +111,6 @@ function StaticButtons(props) {
           </IconButton>
         </Grid>
       </Grid>
-      <FunctionalDrawer anchor="right" open={open} close={handleClose}>
-        <div>Drawer here</div>
-      </FunctionalDrawer>
       <FunctionalMenu
         id="Update menu"
         anchorEl={anchorUpdateEl}
