@@ -7,7 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import Badge from "@material-ui/core/Badge";
 import Button from "@material-ui/core/Button";
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+
 // import MenuList from "@material-ui/core/MenuList";
 // import MenuItem from "@material-ui/core/MenuItem";
 // import ListItemText from "@material-ui/core/ListItemText";
@@ -17,7 +17,6 @@ import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded";
-// import CallMadeRoundedIcon from "@material-ui/icons/CallMadeRounded";
 
 //Import Custom Components
 import MessagesIcon from "../icons/MessagesIcon";
@@ -43,23 +42,19 @@ function StaticButtons(props) {
   const handleExpandMoreClick = e => {
     setAnchorExpandEl(e.currentTarget);
   };
+  const handleExpandMoreClose = () => {
+    setAnchorExpandEl(null);
+  };
 
   const handleUpdateClick = e => {
     setAnchorUpdateEl(e.currentTarget);
   };
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
+  const handleUpdateClose = () => {
+    setAnchorUpdateEl(null);
   };
   const toggleDrawerOpen = () => {
-    setOpen(!open);
-  };
-
-  const handleClose = () => {
-    setAnchorExpandEl(null);
-    setAnchorUpdateEl(null);
-    setOpen(false);
-    console.log("clicked away");
+    setOpen(state => !state);
   };
 
   const classes = useStyles();
@@ -78,20 +73,16 @@ function StaticButtons(props) {
           </IconButton>
         </Grid>
         <Grid item>
-          <IconButton
-            //  onClick={handleDrawerOpen}
-            onClick={toggleDrawerOpen}
-          >
+          <IconButton onClick={toggleDrawerOpen}>
             <MessagesIcon />
           </IconButton>
         </Grid>
         {open && (
-          <FunctionalDrawer anchor="right" open={open} close={handleClose}>
+          <FunctionalDrawer anchor="right" open={open} close={toggleDrawerOpen}>
             <div>Drawer here</div>
           </FunctionalDrawer>
         )}
-        {/* <ClickAwayListener onClickAway={handleClose}> */}
-        {/* </ClickAwayListener> */}
+
         <Grid item></Grid>
         <Button
           style={{ color: "#8e8e8e" }}
@@ -115,7 +106,7 @@ function StaticButtons(props) {
         id="Update menu"
         anchorEl={anchorUpdateEl}
         handleOpen={Boolean(anchorUpdateEl)}
-        handleOnClose={handleClose}
+        handleOnClose={handleUpdateClose}
       >
         <UpdatesMenu />
       </FunctionalMenu>
@@ -123,9 +114,9 @@ function StaticButtons(props) {
         id="Expand More menu"
         anchorEl={anchorExpandEl}
         handleOpen={Boolean(anchorExpandEl)}
-        handleOnClose={handleClose}
+        handleOnClose={handleExpandMoreClose}
       >
-        <OptionMenuItems handleClose={handleClose} />
+        <OptionMenuItems handleClose={handleExpandMoreClose} />
       </FunctionalMenu>
     </React.Fragment>
   );
