@@ -3,35 +3,44 @@ import React from "react";
 //Import MaterialUI Components
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 
 // import Button from "@material-ui/core/Button";
 
-const useStyles = makeStyles({
-  root: {
-    marginTop: "64px"
+const useStyles = makeStyles(theme => ({
+  root: {},
+  paper: {
+    marginTop: "56px",
+    width: "240px",
+    "@media(min-width:600px)": {
+      marginTop: "64px"
+    },
+    boxShadow: "rgba(0, 0, 0, 0.1) -3px 4px 14px 0px"
   },
   list: {
     width: 250
   }
-});
+}));
 
-function FunctionalDrawer(props) {
+const FunctionalDrawer = React.forwardRef((props, ref) => {
   const classes = useStyles();
 
   return (
     <React.Fragment>
-      <Drawer
-        anchor={props.anchor}
-        open={props.open}
-        onClose={props.close}
-        className={classes.root}
-        classes={{ paper: classes.root, backrop: classes.root }}
-        ModalProps={{ BackdropProps: { invisible: true, open: false } }}
-      >
-        {props.children}
-      </Drawer>
+      <ClickAwayListener onClickAway={props.close}>
+        <Drawer
+          ref={ref}
+          anchor={props.anchor}
+          variant="persistent"
+          open={props.open}
+          className={classes.root}
+          classes={{ paper: classes.paper, modal: classes.root }}
+        >
+          {props.children}
+        </Drawer>
+      </ClickAwayListener>
     </React.Fragment>
   );
-}
+});
 
 export default FunctionalDrawer;

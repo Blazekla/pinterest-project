@@ -7,6 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import Badge from "@material-ui/core/Badge";
 import Button from "@material-ui/core/Button";
+
 // import MenuList from "@material-ui/core/MenuList";
 // import MenuItem from "@material-ui/core/MenuItem";
 // import ListItemText from "@material-ui/core/ListItemText";
@@ -16,7 +17,6 @@ import Button from "@material-ui/core/Button";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded";
-// import CallMadeRoundedIcon from "@material-ui/icons/CallMadeRounded";
 
 //Import Custom Components
 import MessagesIcon from "../icons/MessagesIcon";
@@ -42,19 +42,19 @@ function StaticButtons(props) {
   const handleExpandMoreClick = e => {
     setAnchorExpandEl(e.currentTarget);
   };
+  const handleExpandMoreClose = () => {
+    setAnchorExpandEl(null);
+  };
 
   const handleUpdateClick = e => {
     setAnchorUpdateEl(e.currentTarget);
   };
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setAnchorExpandEl(null);
+  const handleUpdateClose = () => {
     setAnchorUpdateEl(null);
-    setOpen(false);
+  };
+  const toggleDrawerOpen = () => {
+    setOpen(state => !state);
   };
 
   const classes = useStyles();
@@ -73,10 +73,16 @@ function StaticButtons(props) {
           </IconButton>
         </Grid>
         <Grid item>
-          <IconButton onClick={handleDrawerOpen}>
+          <IconButton onClick={toggleDrawerOpen}>
             <MessagesIcon />
           </IconButton>
         </Grid>
+        {open && (
+          <FunctionalDrawer anchor="right" open={open} close={toggleDrawerOpen}>
+            <div>Drawer here</div>
+          </FunctionalDrawer>
+        )}
+
         <Grid item></Grid>
         <Button
           style={{ color: "#8e8e8e" }}
@@ -96,14 +102,11 @@ function StaticButtons(props) {
           </IconButton>
         </Grid>
       </Grid>
-      <FunctionalDrawer anchor="right" open={open} close={handleClose}>
-        <div>Drawer here</div>
-      </FunctionalDrawer>
       <FunctionalMenu
         id="Update menu"
         anchorEl={anchorUpdateEl}
         handleOpen={Boolean(anchorUpdateEl)}
-        handleOnClose={handleClose}
+        handleOnClose={handleUpdateClose}
       >
         <UpdatesMenu />
       </FunctionalMenu>
@@ -111,9 +114,9 @@ function StaticButtons(props) {
         id="Expand More menu"
         anchorEl={anchorExpandEl}
         handleOpen={Boolean(anchorExpandEl)}
-        handleOnClose={handleClose}
+        handleOnClose={handleExpandMoreClose}
       >
-        <OptionMenuItems handleClose={handleClose} />
+        <OptionMenuItems handleClose={handleExpandMoreClose} />
       </FunctionalMenu>
     </React.Fragment>
   );
