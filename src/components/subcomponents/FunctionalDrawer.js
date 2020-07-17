@@ -24,9 +24,13 @@ function FunctionalDrawer(props) {
         anchor={props.anchor}
         open={props.open}
         onClose={props.close}
-        className={classes.root}
-        classes={{ paper: classes.root, backrop: classes.root }}
-        ModalProps={{ BackdropProps: { invisible: true, open: false } }}
+        // className={classes.root}
+        classes={{ paper: classes.root, modal: classes.root }}
+        ModalProps={{
+          onBackdropClick: props.close,
+          hideBackdrop: true
+          // BackdropProps: { invisible: false, open: false }
+        }}
       >
         {props.children}
       </Drawer>
