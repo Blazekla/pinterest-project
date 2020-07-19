@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   search: {
     position: "relative",
     flexGrow: 1,
@@ -20,8 +20,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing(3),
       width: "auto",
-      justifyContent: "flex-start",
-    },
+      justifyContent: "flex-start"
+    }
   },
   searchIcon: {
     width: theme.spacing(7),
@@ -31,46 +31,41 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    color: "#211922",
+    color: "#211922"
   },
   inputRoot: {
     display: "none",
     [theme.breakpoints.up("sm")]: {
       color: "#211922",
-      display: "block",
-    },
+      display: "block"
+    }
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 7),
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("md")]: {
-      width: 200,
-    },
-  },
+      width: 200
+    }
+  }
 }));
 
 function SearchBox() {
   const classes = useStyles();
   return (
     <Grid container className={classes.search}>
-      {/* <div className={classes.search}> */}
       <Grid item className={classes.searchIcon}>
         <SearchIcon />
       </Grid>
-      {/* <Grid item> */}
+
       <InputBase
         placeholder="Search for…"
         classes={{
           root: classes.inputRoot,
-          input: classes.inputInput,
+          input: classes.inputInput
         }}
         inputProps={{ "aria-label": "search" }}
       />
-      {/* </Grid> */}
-      {/* <div className={classes.searchIcon}>
-      </div> */}
-      {/* </div> */}
     </Grid>
   );
 }
