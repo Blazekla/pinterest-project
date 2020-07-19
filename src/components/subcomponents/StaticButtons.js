@@ -7,6 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import Badge from "@material-ui/core/Badge";
 import Button from "@material-ui/core/Button";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 
 // import MenuList from "@material-ui/core/MenuList";
 // import MenuItem from "@material-ui/core/MenuItem";
@@ -53,8 +54,16 @@ function StaticButtons(props) {
   const handleUpdateClose = () => {
     setAnchorUpdateEl(null);
   };
-  const toggleDrawerOpen = () => {
-    setOpen(state => !state);
+
+  const toggleDrawer = e => {
+    setOpen(prev => !prev);
+  };
+  const toggleDrawerClose = e => {
+    if (e.type === "touchend") {
+      return;
+    }
+
+    setOpen(false);
   };
 
   const classes = useStyles();
@@ -72,16 +81,25 @@ function StaticButtons(props) {
             </Badge>
           </IconButton>
         </Grid>
-        <Grid item>
-          <IconButton onClick={toggleDrawerOpen}>
-            <MessagesIcon />
-          </IconButton>
-        </Grid>
-        {open && (
-          <FunctionalDrawer anchor="right" open={open} close={toggleDrawerOpen}>
-            <div>Drawer here</div>
-          </FunctionalDrawer>
-        )}
+
+        <ClickAwayListener
+          mouseEvent="onMouseDown"
+          touchEvent="onTouchStart"
+          onClickAway={e => toggleDrawerClose(e)}
+        >
+          <span>
+            <Grid item>
+              <IconButton onClick={toggleDrawer}>
+                <MessagesIcon />
+              </IconButton>
+            </Grid>
+            {open && (
+              <FunctionalDrawer anchor="right" open={open}>
+                <div>Drawer here</div>
+              </FunctionalDrawer>
+            )}
+          </span>
+        </ClickAwayListener>
 
         <Grid item></Grid>
         <Button

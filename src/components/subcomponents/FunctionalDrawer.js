@@ -3,7 +3,6 @@ import React from "react";
 //Import MaterialUI Components
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 
 // import Button from "@material-ui/core/Button";
 
@@ -27,18 +26,16 @@ const FunctionalDrawer = React.forwardRef((props, ref) => {
 
   return (
     <React.Fragment>
-      <ClickAwayListener onClickAway={props.close}>
-        <Drawer
-          ref={ref}
-          anchor={props.anchor}
-          variant="persistent"
-          open={props.open}
-          className={classes.root}
-          classes={{ paper: classes.paper, modal: classes.root }}
-        >
-          {props.children}
-        </Drawer>
-      </ClickAwayListener>
+      <Drawer
+        ref={ref}
+        anchor={props.anchor}
+        variant="persistent"
+        open={props.open}
+        className={classes.root}
+        classes={{ paper: classes.paper, modal: classes.root }}
+      >
+        {props.children}
+      </Drawer>
     </React.Fragment>
   );
 });
