@@ -4,21 +4,19 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 
-// import Button from "@material-ui/core/Button";
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {},
   paper: {
     marginTop: "56px",
     width: "240px",
     "@media(min-width:600px)": {
-      marginTop: "64px"
+      marginTop: "64px",
     },
-    boxShadow: "rgba(0, 0, 0, 0.1) -3px 4px 14px 0px"
+    boxShadow: "rgba(0, 0, 0, 0.1) -3px 4px 14px 0px",
   },
   list: {
-    width: 250
-  }
+    width: 250,
+  },
 }));
 
 const FunctionalDrawer = React.forwardRef((props, ref) => {
