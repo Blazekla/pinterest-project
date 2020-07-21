@@ -11,24 +11,24 @@ import Typography from "@material-ui/core/Typography";
 
 import CallMadeRoundedIcon from "@material-ui/icons/CallMadeRounded";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   menuList: {
     minWidth: "180px",
     maxWidth: "360px",
     borderRadius: "16px",
     "&:focus": {
-      outline: "none",
-    },
+      outline: "none"
+    }
   },
   checkedIcon: {
-    justifyContent: "flex-end",
-  },
+    justifyContent: "flex-end"
+  }
 }));
 
 const OptionsMenuItems = React.forwardRef(({ handleClose }, ref) => {
   const classes = useStyles();
   return (
-    <MenuList className={classes.menuList}>
+    <MenuList className={classes.menuList} ref={ref}>
       <Typography>Accounts</Typography>
       <MenuItem
         button

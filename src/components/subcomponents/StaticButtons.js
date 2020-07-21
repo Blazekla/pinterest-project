@@ -6,41 +6,68 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import Badge from "@material-ui/core/Badge";
-import Button from "@material-ui/core/Button";
-// import MenuList from "@material-ui/core/MenuList";
-// import MenuItem from "@material-ui/core/MenuItem";
-// import ListItemText from "@material-ui/core/ListItemText";
-// import ListItemIcon from "@material-ui/core/ListItemIcon";
-// import Typography from "@material-ui/core/Typography";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import ExpandMoreRoundedIcon from "@material-ui/icons/ExpandMoreRounded";
-// import CallMadeRoundedIcon from "@material-ui/icons/CallMadeRounded";
 
 //Import Custom Components
 import MessagesIcon from "../icons/MessagesIcon";
 import FunctionalMenu from "./FunctionalMenu";
+import FunctionalDrawer from "./FunctionalDrawer";
 import OptionMenuItems from "./OptionsMenuItems";
+import UpdatesMenu from "./UpdatesMenu";
+import InboxDrawer from "./InboxDrawer";
 
 const useStyles = makeStyles((theme) => ({
   container: {
     width: "auto",
   },
   iconBackground: {
-    fill: "#111",
+    "& span": {
+      "& svg": {
+        fill: "#111",
+      },
+    },
+  },
+  buttonSpacing: {
+    [theme.breakpoints.down("xs")]: {
+      marginLeft: "-6px",
+      marginRight: "-6px",
+    },
   },
 }));
 
 function StaticButtons(props) {
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorExpandEl, setAnchorExpandEl] = useState(null);
+  const [anchorUpdateEl, setAnchorUpdateEl] = useState(null);
+  const [open, setOpen] = useState(false);
 
-  const handleClick = (e) => {
-    setAnchorEl(e.currentTarget);
+  const handleExpandMoreClick = (e) => {
+    setAnchorExpandEl(e.currentTarget);
+  };
+  const handleExpandMoreClose = () => {
+    setAnchorExpandEl(null);
   };
 
-  const handleMenuclose = () => {
-    setAnchorEl(null);
+  const handleUpdateClick = (e) => {
+    setAnchorUpdateEl(e.currentTarget);
+  };
+
+  const handleUpdateClose = () => {
+    setAnchorUpdateEl(null);
+  };
+
+  const toggleDrawer = (e) => {
+    setOpen((prev) => !prev);
+  };
+  const toggleDrawerClose = (e) => {
+    if (e.type === "touchend") {
+      return;
+    }
+
+    setOpen(false);
   };
 
   const classes = useStyles();
@@ -48,43 +75,77 @@ function StaticButtons(props) {
     <React.Fragment>
       <Grid container wrap="nowrap" className={classes.container}>
         <Grid item>
-          <IconButton aria-label="show 17 new notifications" color="inherit">
-            <Badge badgeContent={17} color="secondary">
+          <IconButton
+            aria-label="show 4 new notifications"
+            color="inherit"
+            onClick={handleUpdateClick}
+            className={classes.buttonSpacing}
+          >
+            <Badge badgeContent={4} color="secondary">
               <NotificationsIcon />
             </Badge>
           </IconButton>
         </Grid>
-        <Grid item>
-          <IconButton>
-            <MessagesIcon />
-          </IconButton>
-        </Grid>
+
+        <ClickAwayListener
+          mouseEvent="onMouseDown"
+          touchEvent="onTouchStart"
+          onClickAway={(e) => toggleDrawerClose(e)}
+        >
+          <div>
+            <Grid item>
+              <IconButton onClick={toggleDrawer}>
+                <MessagesIcon />
+              </IconButton>
+            </Grid>
+            {open && (
+              <FunctionalDrawer anchor="right" open={open}>
+                <InboxDrawer />
+              </FunctionalDrawer>
+            )}
+          </div>
+        </ClickAwayListener>
+
         <Grid item></Grid>
-        <Button
-          style={{ color: "#8e8e8e" }}
+        <IconButton
+          style={{
+            color: "#8e8e8e",
+          }}
           component={NavLink}
           to="/user"
+          className={classes.buttonSpacing}
           activeClassName={classes.iconBackground}
         >
-          <AccountCircle style={{ color: "#8e8e8e" }} />
-        </Button>
+          <AccountCircle
+          // style={{ color: "#8e8e8e" }}
+          />
+        </IconButton>
         <Grid item>
           <IconButton
             aria-label="show more options vertical icon"
             color="inherit"
-            onClick={handleClick}
+            onClick={handleExpandMoreClick}
+            className={classes.buttonSpacing}
           >
             <ExpandMoreRoundedIcon />
           </IconButton>
         </Grid>
       </Grid>
       <FunctionalMenu
-        id="minor functional menu"
-        anchorEl={anchorEl}
-        handleOpen={Boolean(anchorEl)}
-        handleOnClose={handleMenuclose}
+        id="Update menu"
+        anchorEl={anchorUpdateEl}
+        handleOpen={Boolean(anchorUpdateEl)}
+        handleOnClose={handleUpdateClose}
       >
-        <OptionMenuItems handleClose={handleMenuclose} />
+        <UpdatesMenu />
+      </FunctionalMenu>
+      <FunctionalMenu
+        id="Expand More menu"
+        anchorEl={anchorExpandEl}
+        handleOpen={Boolean(anchorExpandEl)}
+        handleOnClose={handleExpandMoreClose}
+      >
+        <OptionMenuItems handleClose={handleExpandMoreClose} />
       </FunctionalMenu>
     </React.Fragment>
   );

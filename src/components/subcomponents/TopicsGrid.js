@@ -46,8 +46,8 @@ function TopicsGrid() {
     >
       {count.map(id => {
         return (
-          <div className={classes.singleTopic}>
-            <Grid item key={id} className={classes.gridImage}>
+          <div key={id} className={classes.singleTopic}>
+            <Grid item className={classes.gridImage}>
               <Card className={classes.card}>
                 <CardActionArea>
                   <CardMedia

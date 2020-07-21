@@ -22,6 +22,10 @@ const useStyles = makeStyles((theme) => ({
       width: "auto",
       justifyContent: "flex-start",
     },
+    [theme.breakpoints.down("xs")]: {
+      backgroundColor: "transparent",
+      marginRight: `-${theme.spacing(2)}px`,
+    },
   },
   searchIcon: {
     width: theme.spacing(7),
@@ -32,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     color: "#211922",
+    [theme.breakpoints.down("xs")]: {
+      position: "static",
+    },
   },
   inputRoot: {
     display: "none",
@@ -54,11 +61,10 @@ function SearchBox() {
   const classes = useStyles();
   return (
     <Grid container className={classes.search}>
-      {/* <div className={classes.search}> */}
       <Grid item className={classes.searchIcon}>
         <SearchIcon />
       </Grid>
-      {/* <Grid item> */}
+
       <InputBase
         placeholder="Search for…"
         classes={{
@@ -67,10 +73,6 @@ function SearchBox() {
         }}
         inputProps={{ "aria-label": "search" }}
       />
-      {/* </Grid> */}
-      {/* <div className={classes.searchIcon}>
-      </div> */}
-      {/* </div> */}
     </Grid>
   );
 }
