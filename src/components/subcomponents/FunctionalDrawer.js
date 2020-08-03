@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
   root: {},
   paper: {
     marginTop: "56px",
-    width: "240px",
+    width: "390px",
     "@media(min-width:600px)": {
       marginTop: "64px",
     },

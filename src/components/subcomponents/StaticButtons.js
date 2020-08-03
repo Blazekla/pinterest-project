@@ -116,9 +116,7 @@ function StaticButtons(props) {
           className={classes.buttonSpacing}
           activeClassName={classes.iconBackground}
         >
-          <AccountCircle
-          // style={{ color: "#8e8e8e" }}
-          />
+          <AccountCircle />
         </IconButton>
         <Grid item>
           <IconButton
