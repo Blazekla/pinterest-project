@@ -76,9 +76,10 @@ function SingleCardInfo(props) {
         </Grid>
         <Grid container direction="column" item>
           <Typography>
-            Description Here Lorem ipsum dolor sit, amet consectetur adipisicing
-            elit. Odit laborum aut veniam temporibus similique deserunt non. Quo
-            optio quis cum!
+            Description Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Aperiam minima, dicta pariatur mollitia quo cupiditate consectetur
+            accusamus non quaerat molestiae repellendus voluptatum obcaecati
+            unde ipsa quidem ab fuga praesentium temporibus?
           </Typography>
           <Grid container item className={classes.followingSection}>
             <Avatar />
