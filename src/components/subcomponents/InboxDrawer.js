@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
+import Avatar from "@material-ui/core/Avatar";
 
 const useStyles = makeStyles((theme) => ({
   inboxTitle: {
@@ -23,7 +24,35 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #ddd",
     borderRadius: "999px",
   },
+  userContainer: {
+    paddingTop: "4px",
+    paddingBottom: "4px",
+  },
+  userInfo: {
+    width: "auto",
+    marginLeft: "16px",
+  },
+  userTitle: {
+    fontWeight: "700",
+  },
+  subText: {
+    color: "#767676",
+  },
 }));
+
+const count = [
+  "Alex B",
+  "Rachael A",
+  "Ady M",
+  "Ivy V",
+  "Marquis A",
+  "Alexandra H",
+  "Alexis L",
+  "Allison C",
+  "Jonathan N",
+  "Kyle H",
+  "Robert P",
+];
 
 function InboxDrawer() {
   const classes = useStyles();
@@ -54,8 +83,25 @@ function InboxDrawer() {
         <Grid item>
           <Typography>Suggested</Typography>
         </Grid>
-        <Grid item>
-          <Typography>User1...</Typography>
+        <Grid container direction="column" item>
+          {count.map((user, id) => (
+            <Grid container key={id} className={classes.userContainer}>
+              <Grid item>
+                <Avatar />
+              </Grid>
+              <Grid
+                container
+                direction="column"
+                item
+                className={classes.userInfo}
+              >
+                <Typography className={classes.userTitle}>{user}</Typography>
+                <Typography className={classes.subText}>
+                  In your network
+                </Typography>
+              </Grid>
+            </Grid>
+          ))}
         </Grid>
       </Grid>
     </>
